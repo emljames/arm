@@ -3,7 +3,6 @@ project:
 
 website:
   title: "Advanced Research Methods"
-  author: "Emma James"
   navbar: 
     left: 
       - href: index.qmd
