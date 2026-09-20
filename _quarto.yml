@@ -1,0 +1,26 @@
+project:
+  type: book
+
+book:
+  title: "Advanced Research Methods"
+  author: "Emma James"
+  date: "2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - zephyr
+
+  pdf:
+    documentclass: scrreprt
+  docx:
+    toc: true
+
+
+
