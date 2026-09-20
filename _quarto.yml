@@ -36,7 +36,6 @@ format:
   pdf:
     documentclass: scrreprt
     papersize: a4
-    fontfamily: "Verdana"
     geometry:
       - top=25mm
       - bottom=25mm
