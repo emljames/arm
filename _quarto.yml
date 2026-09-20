@@ -5,12 +5,12 @@ website:
   title: "Advanced Research Methods"
   navbar: 
     left: 
-      - href: index.qmd
+      - href: home.qmd
         text: Home
-      - href: intro.qmd
-        text: Introduction
-
-bibliography: references.bib
+      - href: 0_setup.qmd
+        text: "Set-up steps"
+      - href: 1_intro.qmd
+        text: "W1: Introduction"
 
 format:
   html:
@@ -18,9 +18,16 @@ format:
 
   pdf:
     documentclass: scrreprt
+    papersize: a4
+    fontfamily: "Verdana"
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=20mm
+      - right=20mm
     
   docx:
     toc: true
-
-
-
+    number-sections: true
+    number-depth: 3
+    page-width: 8.27
