@@ -95,9 +95,9 @@ Scripts are like lists of instructions for the computer to follow. You can save 
 
 The lower left window is called the *Console*. This is where the magic happens! Here, you can type in individual commands to ask the computer to do something. You can use it just like a calculator: try clicking in the console and typing `20 + 57` (or indeed any other sum you choose!). If you press the Enter/Return key, you should see the answer printed below.
 
-We can also instruct the computer to create an "object" (or "variable"[^1_intro-1]). An object is like a box that you can store information in. Some objects are big, such as large datasets that contain many numbers or even chunks of text. Others might contain only one number.
+We can also instruct the computer to create an "object" (or "variable"[^1]). An object is like a box that you can store information in. Some objects are big, such as large datasets that contain many numbers or even chunks of text. Others might contain only one number.
 
-[^1_intro-1]: In programming, "variables" are used to store information in memory. In *R,* a language used for statistics, these are commonly referred to as "objects" to avoid confusion with the use of "variable" in relation to your data (i.e., a column in your dataset, your independent/dependent variables). You will see these referred to as either, and either is fine.
+[^1]: In programming, "variables" are used to store information in memory. In *R,* a language used for statistics, these are commonly referred to as "objects" to avoid confusion with the use of "variable" in relation to your data (i.e., a column in your dataset, your independent/dependent variables). You will see these referred to as either, and either is fine.
 
 First, let’s create an object called `a`, and give it the value 5. Click on the Console area and type:
 
@@ -105,9 +105,9 @@ First, let’s create an object called `a`, and give it the value 5. Click on th
 a <- 5
 ```
 
-Then hit the Enter/Return key to run it. You will see the arrows `<-` a lot in R: they are used to assign (or store) everything on the right to the name that you provide on the left[^1_intro-2].
+Then hit the Enter/Return key to run it. You will see the arrows `<-` a lot in R: they are used to assign (or store) everything on the right to the name that you provide on the left[^2].
 
-[^1_intro-2]: If you already have some programming experience, you might be more used to using the `=` symbol to assign values. This works fine in *R* too so can be used if you prefer. However, using the `<-` is more clearly distinguished from other aspects of *R* code, and so is more readily used/taught.
+[^2]: If you already have some programming experience, you might be more used to using the `=` symbol to assign values. This works fine in *R* too so can be used if you prefer. However, using the `<-` is more clearly distinguished from other aspects of *R* code, and so is more readily used/taught.
 
 ## Top right: Environment
 
@@ -148,9 +148,9 @@ Look to the top left of your RStudio window. Click the button that has a white s
 
 ## Loading data into R
 
-There is a file in the Lecture 1 section of the VLE called **ARM1_data1_gamers.csv**. This is a .csv file, which is a readily used data storage format that can be opened by many different software[^1_intro-3]. Download this file, and save it in the folder we previously created (likely *Documents/ARM_Practicals/data/*).
+There is a file in the Lecture 1 section of the VLE called **ARM1_data1_gamers.csv**. This is a .csv file, which is a readily used data storage format that can be opened by many different software[^3]. Download this file, and save it in the folder we previously created (likely *Documents/ARM_Practicals/data/*).
 
-[^1_intro-3]: If you wish to read in different file types in the future (e.g., .xlsx, .sav), there are many different bespoke packages available that will support you in doing this (e.g., read_excel, haven).
+[^3]: If you wish to read in different file types in the future (e.g., .xlsx, .sav), there are many different bespoke packages available that will support you in doing this (e.g., read_excel, haven).
 
 At the top of your script file, you can now instruct R to read in the dataset by adding the following line:
 
@@ -201,9 +201,9 @@ sd(gamer_dat$wmc)/sqrt(length(gamer_dat$wmc))
 hist(gamer_dat$wmc)
 ```
 
-These lines compute the median, standard deviation and standard error, and then plot a histogram. If you select your entire script and run it, you will see these values appear in the *Console* and a histogram of the data appear in the *Plots* window. Well done – you have just written your first *R* script![^1_intro-4]
+These lines compute the median, standard deviation and standard error, and then plot a histogram. If you select your entire script and run it, you will see these values appear in the *Console* and a histogram of the data appear in the *Plots* window. Well done – you have just written your first *R* script![^4]
 
-[^1_intro-4]: The eagle-eyed among you might also see that you have your first example of rainbow brackets, if you turned on this setting during the 0_SetUp task!
+[^4]: The eagle-eyed among you might also see that you have your first example of rainbow brackets, if you turned on this setting during the 0_SetUp task!
 
 ::: {.callout-tip title="Take note! (literally)"}
 Before we go any further, we should talk about good coding practices. It’s very helpful if you can add comments to your code to say what you are doing in each section. This is helpful as a learner, allowing you look back at the scripts that we write in these practicals without having to match it up with this worksheet. It’s also good practice as you write more advanced scripts: future you will be very grateful for notes explaining what you are doing at each step.

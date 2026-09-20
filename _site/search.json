@@ -19,5 +19,173 @@
     "title": "References",
     "section": "",
     "text": "References"
+  },
+  {
+    "objectID": "1_intro.html",
+    "href": "1_intro.html",
+    "title": "Introduction to R",
+    "section": "",
+    "text": "The overarching aim of this practical is to get you used to the R environment. The best way to do this is to start with something you already know about: basic statistics from your first and second year. Along the way we will introduce basic concepts common to all programming languages, with no prior programming knowledge assumed.\n\n\n\n\n\n\nLearning objectives\n\n\n\nBy the end of this practical, you will be able to:\n\nUse RStudio to write, comment, and execute lines of code.\nCreate and manipulate objects in R.\nLoad data files into R.\nCalculate basic summary statistics.\nImplement common inferential tests, including a t-test, correlation, and ANOVA."
+  },
+  {
+    "objectID": "1_intro.html#top-left-scripts",
+    "href": "1_intro.html#top-left-scripts",
+    "title": "Introduction to R",
+    "section": "Top left: Scripts",
+    "text": "Top left: Scripts\nIn the top left corner of the image is a quadrant for your scripts. You won’t see this quadrant when you first open R, but it will show when you create one in Section 2.\nScripts are like lists of instructions for the computer to follow. You can save them just like a Word document, and this makes it easy to set up complex analyses without typing them in by hand each time. Throughout these practicals, you will create several scripts that you can later adapt and reuse in running statistical analyses."
+  },
+  {
+    "objectID": "1_intro.html#bottom-left-console",
+    "href": "1_intro.html#bottom-left-console",
+    "title": "Introduction to R",
+    "section": "Bottom left: Console",
+    "text": "Bottom left: Console\nThe lower left window is called the Console. This is where the magic happens! Here, you can type in individual commands to ask the computer to do something. You can use it just like a calculator: try clicking in the console and typing 20 + 57 (or indeed any other sum you choose!). If you press the Enter/Return key, you should see the answer printed below.\nWe can also instruct the computer to create an “object” (or “variable”1). An object is like a box that you can store information in. Some objects are big, such as large datasets that contain many numbers or even chunks of text. Others might contain only one number.\nFirst, let’s create an object called a, and give it the value 5. Click on the Console area and type:\n\na &lt;- 5\n\nThen hit the Enter/Return key to run it. You will see the arrows &lt;- a lot in R: they are used to assign (or store) everything on the right to the name that you provide on the left2."
+  },
+  {
+    "objectID": "1_intro.html#top-right-environment",
+    "href": "1_intro.html#top-right-environment",
+    "title": "Introduction to R",
+    "section": "Top right: Environment",
+    "text": "Top right: Environment\nIf you have created an object, a, you should now see that it has appeared in the top right section, in the Environment tab, with the assigned value 5. This means that we can now treat a as though it is a number: we can run mathematical operations on the object, and get out an answer that depends on the value assigned. You can try this now by typing a*2 into the console to multiply it by two, or a^2 to square it.\nSo why not just type 5^2 in the first place? The reason objects are useful is that we can change and update their values, or include many numbers in them. Let’s make a new object called b with the numbers 1-5, and see what happens when we square it:\n\nb &lt;- c(1, 2, 3, 4, 5)\nb^2\n\n[1]  1  4  9 16 25\n\n\nYou can see that we now get a list of the squares of all the elements.\nWe will use objects to store and manipulate data in R, similar to how we might work on a spreadsheet or SPSS file. You can always inspect the objects you have to hand and the values assigned to them by looking in the Environment panel."
+  },
+  {
+    "objectID": "1_intro.html#bottom-right-other-things",
+    "href": "1_intro.html#bottom-right-other-things",
+    "title": "Introduction to R",
+    "section": "Bottom right: Other things!",
+    "text": "Bottom right: Other things!\nThe bottom right window has several sections that can be navigated by clicking on the tabs at the top. Files shows the files in the directory that we are working from, Plots will contain any figures that we create, Packages contains a list of extensions that will enable us to do different types of statistics, and the Help table will show the help pages for a particular function if we ask for them (we’ll do this a lot!)."
+  },
+  {
+    "objectID": "1_intro.html#opening-your-r-project",
+    "href": "1_intro.html#opening-your-r-project",
+    "title": "Introduction to R",
+    "section": "Opening your R Project",
+    "text": "Opening your R Project\nMake sure that you are working in the R Project ARM_Practicals. This should be the case if you have just completed the 0_SetUp instructions. If not, or if you closed RStudio in between, you can open this by clicking File &gt;&gt; Open Project… and navigating to the project file we created.\nRemember, you should be able to see this in the top-right corner of the RStudio window.\n\n\n\nCurrent R Project open"
+  },
+  {
+    "objectID": "1_intro.html#creating-a-script",
+    "href": "1_intro.html#creating-a-script",
+    "title": "Introduction to R",
+    "section": "Creating a script",
+    "text": "Creating a script\nLook to the top left of your RStudio window. Click the button that has a white square and cross in a green circle (or alternatively, click File &gt;&gt; New File &gt;&gt; R Script). Now you have a script open, let’s save it so that we can keep saving our progress as we go. Click File &gt;&gt; Save As… and navigate to the scripts folder inside the ARM_Practicals folder you created. Once you are in this folder, save your script with the name ARM1_intro.R."
+  },
+  {
+    "objectID": "1_intro.html#loading-data-into-r",
+    "href": "1_intro.html#loading-data-into-r",
+    "title": "Introduction to R",
+    "section": "Loading data into R",
+    "text": "Loading data into R\nThere is a file in the Lecture 1 section of the VLE called ARM1_data1_gamers.csv. This is a .csv file, which is a readily used data storage format that can be opened by many different software3. Download this file, and save it in the folder we previously created (likely Documents/ARM_Practicals/data/).\nAt the top of your script file, you can now instruct R to read in the dataset by adding the following line:\n\ngamer_dat &lt;- read.csv(\"./data/ARM1_data1_gamers.csv\")\n\nWe are creating an object in R here called gamer_dat, and using the &lt;- to assign something to it. Here, we want to assign the data file that we load in, so need to instruct it to find and load the data file. We use read.csv() to tell R that we want to load in a csv file. We tell it the file path to where the dataset is stored: the ./ affirms that we are starting in the current directory (your R project folder), then data/ instructs it to look in the data folder, then the final part is the name of the file (including the .csv extension).\nNow you have typed this into your script, you need to execute it. You can do this by highlighting it with your mouse and then clicking ‘Run’ at the top of the script. Alternatively, if your cursor is on the correct line, you can hit Ctrl + Enter on your keyboard.\nIf you are successful, you should see an object called gamer_dat appear in the Environment tab. You can see that it has 100 observations (rows) for 5 variables (columns). If you click the little grid to the right of this description, you can inspect the dataset in your top left panel. You should see that the five columns correspond to:\n\nppt_id: a unique identifying code for each participant\nage_years: their age in years\ngamer: whether they play video games (y) or not (n)\nhours: if they do play video games, how many hours they play per week on average (or NA if they don’t, meaning that it’s a missing value)\nwmc: working memory capacity\n\nThis dataset was simulated for the purposes of today’s practical, but was inspired by a research study by Fiona McNab."
+  },
+  {
+    "objectID": "1_intro.html#running-a-t-test",
+    "href": "1_intro.html#running-a-t-test",
+    "title": "Introduction to R",
+    "section": "Running a t-test",
+    "text": "Running a t-test\nIn Years 1 and 2, you learned about some inferential statistics that test the relationship between two variables.\nOne way to analyse the data that you have loaded is to run a t-test to test the difference in means between two groups. Let’s test the hypothesis that gamers versus non-gamers have different working memory capacity. You can do this by adding the following line of code to your script:\n\nt.test(wmc ~ gamer, data = gamer_dat)\n\nWithin the t.test call, we have asked for our dependent variable (wmc) to be predicted by (~) the variable gamer, which we have seen has two levels (y, n). We don’t actually have objects called wmc and gamer in our R environment, so we specify that it should look for these within the gamer_dat dataset.\nRunning this line of code should give you the following output:\n\n\n\n    Welch Two Sample t-test\n\ndata:  wmc by gamer\nt = -2.3734, df = 96.462, p-value = 0.01961\nalternative hypothesis: true difference in means between group n and group y is not equal to 0\n95 percent confidence interval:\n -1.8730152 -0.1669848\nsample estimates:\nmean in group n mean in group y \n           7.92            8.94 \n\n\nThe output tells us the test that we have run, and provides us with the necessary values for reporting on the third line of output: the t-statistic, degrees of freedom, and p-value. You can see here that there is a significant difference between the two groups as the p &lt; .05. The output also handily summarises the mean working memory capacity for each group."
+  },
+  {
+    "objectID": "1_intro.html#running-a-correlation",
+    "href": "1_intro.html#running-a-correlation",
+    "title": "Introduction to R",
+    "section": "Running a correlation",
+    "text": "Running a correlation\nAnother simple analysis for testing the relationship between two variables is a correlation, which we can use to test the strength of association between two continuous variables. Let’s test how working memory capacity changes with age, by typing the following line.\n\ncor.test(formula = ~ age_years + wmc, data = gamer_dat)\n\nRunning this line of code should produce the following:\n\n\n\n    Pearson's product-moment correlation\n\ndata:  age_years and wmc\nt = -2.2034, df = 98, p-value = 0.02991\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n -0.39674850 -0.02177224\nsample estimates:\n       cor \n-0.2172612 \n\n\nAgain, the output tells us the test that has been done, and shows us that there is a significant relationship between the two variables (p = 0.02). The final line of output, labelled as “cor”, is the correlation coefficient, showing a negative correlation between the two variables: as age increases, working memory decreases.\nThese calls for statistical tests that we have just run are called functions. We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., help(t.test) or help(cor.test) in the Console (this is a bit meta, we use the help() function to ask for help about other functions). This should bring up some helpful information in the bottom right window. The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument method = \"spearman\" inside the brackets. Try this now."
+  },
+  {
+    "objectID": "1_intro.html#running-an-anova",
+    "href": "1_intro.html#running-an-anova",
+    "title": "Introduction to R",
+    "section": "Running an ANOVA",
+    "text": "Running an ANOVA\nFinally, let’s try running a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what type of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.\nMake sure that you have downloaded the data from the VLE and saved it in your data folder. Then let’s load it into R and assign it to an object called type_dat. Inspect the dataset to see the game categories.\n\ntype_dat &lt;- read.csv(\"./data/ARM1_data2_gametype.csv\")\n\nGiven there are three levels of game type, we can no longer use a t-test to compare working memory between groups. Instead, we can use a one-way ANOVA.\nThe first step in running an ANOVA is to check the assumption of homogeneity of variance using Levene’s test. This test isn’t included as standard in R, so we need to load in a package (a set of functions that someone has written) to run it. You only need to run this once in each R session. Add the following lines to your script, and run them:\n\n# Load car package\nlibrary(car)\n\n# Run Levene's test\nleveneTest(wmc ~ type, data = type_dat)\n\n\n\nWarning in leveneTest.default(y = y, group = group, ...): group coerced to\nfactor.\n\n\nLevene's Test for Homogeneity of Variance (center = median)\n      Df F value Pr(&gt;F)\ngroup  2  1.4751 0.2344\n      87               \n\n\nThe output prints a warning that it interpreted our group (i.e., game type) as a factor. This is fine, that’s what we want it to do! You can then see that the test is not significant, so we can assume that the variances are equal across the groups. This means that we can proceed with our ANOVA.\nWe can run the test and display the results using only two lines of code:\n\n# Run ANOVA and save output to object\ngametype_model &lt;- aov(wmc ~ type, data = type_dat)\n\n# Print output summary\nsummary(gametype_model)\n\nThis will produce your ANOVA summary table as follows:\n\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \ntype         2  70.42   35.21   11.12 5.01e-05 ***\nResiduals   87 275.53    3.17                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nJust like in SPSS, we can pick out the degrees of freedom (2, 87), the F ratio (4.806) and the p-value (.01). Here we can see that there is a significant difference in working memory capacity depending on the type of game that people play most regularly (p &lt; .05)."
+  },
+  {
+    "objectID": "1_intro.html#challenge-yourself",
+    "href": "1_intro.html#challenge-yourself",
+    "title": "Introduction to R",
+    "section": "Challenge yourself",
+    "text": "Challenge yourself\nIf you have completed the practical in good time and want to challenge yourself, have a go at the following independent exercise. Use the first dataset (ARM1_data1_gamers.csv) to look more closely at the number of hours played.\n\nUse the descriptive statistics functions to work out the mean and standard deviation of this variable.\nFind one or more functions that give us the minimum and maximum number of hours played in the dataset.\nExamine the correlation between working memory capacity and the number of hours played, for the gamers only.\n\nYou might well encounter some errors along the way, and there are multiple ways to solve the problem. Try using the R help files or googling to fix the problem for yourself: this is a major part of coding! The solution(s) will be released next week."
+  },
+  {
+    "objectID": "1_intro.html#further-learning",
+    "href": "1_intro.html#further-learning",
+    "title": "Introduction to R",
+    "section": "Further learning",
+    "text": "Further learning\nYou do not need to learn R to do well in this module, but it’s one way of getting to grips with different statistical techniques and many students enjoy the challenge. If you’re serious about learning R, then the following DataCamp chapters are relevant to this week’s content and will help to consolidate the material ready for the practicals ahead. You will need to sign up for a free account using the link from the VLE Module Information page.\n\nIntroduction to R\nHypothesis Testing in R\n\nYou might also be interested in the R version of the Andy Field textbook (Discovering Statistics using R), if this is a familiar learning style for you. It has many example data sets and details of how to do different tests, and there are plenty of copies available in the library. Alternatively, there is a fantastic textbook for undergraduate psychology students developed by Danielle Navarro, which you can access for free online.\n\n\n\n\n\n\n\nHow’s it going?\n\n\n\nLet us know how today went via this quick survey via this survey - rate the difficulty and length, and leave any comments that would help for us to know (positive comments welcome too!). You will need to be logged in with your university account to respond, but your submission will be anonymous.\nFor more general questions about the practical, please post them on the VLE Discussion Board."
+  },
+  {
+    "objectID": "1_intro.html#footnotes",
+    "href": "1_intro.html#footnotes",
+    "title": "Introduction to R",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIn programming, “variables” are used to store information in memory. In R, a language used for statistics, these are commonly referred to as “objects” to avoid confusion with the use of “variable” in relation to your data (i.e., a column in your dataset, your independent/dependent variables). You will see these referred to as either, and either is fine.↩︎\nIf you already have some programming experience, you might be more used to using the = symbol to assign values. This works fine in R too so can be used if you prefer. However, using the &lt;- is more clearly distinguished from other aspects of R code, and so is more readily used/taught.↩︎\nIf you wish to read in different file types in the future (e.g., .xlsx, .sav), there are many different bespoke packages available that will support you in doing this (e.g., read_excel, haven).↩︎\nThe eagle-eyed among you might also see that you have your first example of rainbow brackets, if you turned on this setting during the 0_SetUp task!↩︎"
+  },
+  {
+    "objectID": "home.html",
+    "href": "home.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Welcome to Advanced Research Methods!\nEach week’s lecture content is available via the VLE module page. These course pages are where you will find the materials for the practical sessions. Each practical session will have its own page of instructions released throughout the semester. Instructions can also be downloaded in Word/PDF format should you prefer.\nThis page outlines how each practical session is set up. Before you begin in Week 1, you should also check out the guidelines for setting up your workspace for this module."
+  },
+  {
+    "objectID": "home.html#preparation",
+    "href": "home.html#preparation",
+    "title": "Introduction",
+    "section": "Preparation",
+    "text": "Preparation\nWe expect that you will come to this session having attended the lecture on Tuesday, or caught up via the recording if you were unable to make it in person. We also recommend that you should have done the core reading for the week to consolidate your understanding. Having done so will help you to engage fully with the practical session, and also enable you to ask questions about aspects that you did not understand."
+  },
+  {
+    "objectID": "home.html#during-the-practical",
+    "href": "home.html#during-the-practical",
+    "title": "Introduction",
+    "section": "During the practical",
+    "text": "During the practical\nThe practical is self-paced. You should work through the instructions to create and annotate your own analysis script, checking your understanding and taking notes as you go.\nWhere we have hidden code sections, do your best to try and figure out the solution yourself before peeking! Trial and error is a much more effective way of learning, and will help you to build your coding skills.\nYou can count on getting stuck at various points during the practical sessions. Errors are a very normal part of coding, even if sometimes frustrating! If you get stuck, try the following:\n\nSpend time trying some different things! What’s happening that you don’t expect? Is there an error message, and does it tell you anything useful?\nGoogle it! Copying and pasting the error message into Google often takes you to help forums where others have asked about the same problem.\nChat to the person next to you—maybe they can spot something in your code that you can’t see?\nPut your hand up, and we’ll come over to help!\n\n\n\n\nArtwork by @allison_horst"
+  },
+  {
+    "objectID": "home.html#challenge-yourself",
+    "href": "home.html#challenge-yourself",
+    "title": "Introduction",
+    "section": "Challenge yourself!",
+    "text": "Challenge yourself!\nIf you finish the exercises in good time or want to continue progressing after the practical, have a go at the independent exercise at the end."
+  },
+  {
+    "objectID": "0_setup.html",
+    "href": "0_setup.html",
+    "title": "Getting set up for the module",
+    "section": "",
+    "text": "You should complete these brief set-up steps first before you begin the practical sessions for the Advanced Research Methods module.\nThese steps are critically important to avoid encountering issues later on. That is, the instructions for future practical sessions assume that you have set up R in this way. If you switch devices later on (e.g., if you are working on university PC, but later decide to follow-up on some practical activities on your own laptop), you should come back to this page and make sure that you have completed these steps."
+  },
+  {
+    "objectID": "0_setup.html#set-up-your-folders",
+    "href": "0_setup.html#set-up-your-folders",
+    "title": "Getting set up for the module",
+    "section": "Set up your folders",
+    "text": "Set up your folders\nLet’s first create a folder to store all of your practical work.\n1) Open the file browser on your computer. On Windows, you can do this by clicking Start &gt;&gt; File Explorer.\n2) Navigate to your Documents folder.\n3) Create a new folder, and call it “ARM_Practicals”.\n4) Within this new folder, create one folder called “scripts”, and another folder called “data”.\n\n\n\n\n\n\nTip\n\n\n\nNote that R is case sensitive, meaning that if you capitalise letters here then you will also need to be specific in your capitalisation in the scripts. It is a good idea to adopt a consistent approach to avoid later issues. Here we have used lower case, and strongly advise you to do the same so that you don’t get confused later on.\n\n\nWhen you download datasets for the practicals in the future, you should save them in your data folder. Similarly, when you create scripts in each practical, save them in the scripts folder."
+  },
+  {
+    "objectID": "0_setup.html#initiate-an-r-project",
+    "href": "0_setup.html#initiate-an-r-project",
+    "title": "Getting set up for the module",
+    "section": "Initiate an R Project",
+    "text": "Initiate an R Project\nNow let’s tell R where we want to work during these practicals.\n1) Open RStudio.\n2) At the top of the window, click File &gt;&gt; New Project…\n3) After a bit of thinking (be patient!), a “New Project Wizard” window should appear. Click the Existing Directory option in the middle, to associate this new project with an existing working directory. We choose this option because we have already set up our folders manually in the previous step.\n4) On the next window, click “Browse…” and then navigate to your ARM_Practicals folder. Once you are in it (and can see your data/scripts folders), click “Open”.\n5) Click “Create Project”.\nThe name of the R Project you are working in should now show in the top right hand corner of your window, like this:\n\n\n\nThe current R Project\n\n\nIf it doesn’t, retrace your steps and try again. If it still doesn’t work, put your hand up and ask for help."
+  },
+  {
+    "objectID": "0_setup.html#moving-forwards",
+    "href": "0_setup.html#moving-forwards",
+    "title": "Getting set up for the module",
+    "section": "Moving forwards",
+    "text": "Moving forwards\nThe instructions for the practicals will assume that you have set up R in this way. We will follow three key principles:\n1) Open the R Project at the start of every session. You can do this by double clicking it from your file browser, or clicking File &gt;&gt; Open Project… from within RStudio.\n2) Save the data files in the data folder, once you have downloaded them from the VLE.\n3) Save your scripts in the scripts folder.\nMore on what these mean in the remainder of Practical 1!"
+  },
+  {
+    "objectID": "0_setup.html#saving-the-workspace",
+    "href": "0_setup.html#saving-the-workspace",
+    "title": "Getting set up for the module",
+    "section": "Saving the workspace",
+    "text": "Saving the workspace\nOne irritating default of RStudio is that it saves everything automatically on exiting. This might sound like a great idea, but in reality it can mean that you have a very messy workspace and that mistakes can emerge from using old material. To turn this off (highly recommended):\n1) At the top of RStudio, click Tools &gt;&gt; Global Options…\n2) On the General panel that should open in the window, there is a section titled Workspace.\n3) Make sure that the Restore .RData[…] box is unticked, and that it is set to never save the workspace on exit.\n4) Click “Apply” to save the settings.\n\n\n\nGlobal options window with recommended General settings"
+  },
+  {
+    "objectID": "0_setup.html#rainbow-parentheses",
+    "href": "0_setup.html#rainbow-parentheses",
+    "title": "Getting set up for the module",
+    "section": "Rainbow parentheses",
+    "text": "Rainbow parentheses\nSometimes we will need to wrap things inside multiple nested brackets. You don’t need to worry about what this means for now, but whilst we’re on the settings, we might as well set up one of my favourite most useful features: rainbow parentheses! This setting colour codes your brackets so that you can tell which ones are paired together. And who doesn’t want a bit of colour on their scripts?!\n1) On the Global Options… window you have open, click on “Code” down the left hand side.\n2) Click the “Display” tab at the op.\n3) Under syntax, check the box that says “Use rainbow parentheses”.\n4) Then click “Apply”, and/or “OK” to close the window.\n\n\n\nGlobal options window with recommended Code Display settings\n\n\nAs for what this has done? Well, you’ll just have to wait and see as we get writing scripts…"
   }
 ]

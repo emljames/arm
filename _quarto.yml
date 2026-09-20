@@ -3,18 +3,35 @@ project:
 
 website:
   title: "Advanced Research Methods"
-  navbar: 
+  page-footer: 
+    center:
+      - text: "License"
+        href: LICENSE.md
+  navbar:
+    navbar:
+    search: true
+    pinned: true
     left: 
       - href: home.qmd
         text: Home
       - href: 0_setup.qmd
         text: "Set-up steps"
-      - href: 1_intro.qmd
-        text: "W1: Introduction"
+      - text: "Weekly content"
+        menu:
+        - href: 1_intro.qmd
+          text: "W1: Introduction"
 
 format:
   html:
     theme: zephyr
+    title-block-banner: true
+    toc: true
+    toc-location: left
+    toc-title: "Outline"
+    toc-depth: 2
+    toc-expand: 2
+    number-sections: true
+    link-external-newwindow: true 
 
   pdf:
     documentclass: scrreprt
