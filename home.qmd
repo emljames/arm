@@ -4,13 +4,13 @@ Welcome to *Advanced Research Methods!*
 
 Each week's lecture content is available via the [VLE module page](https://vle.york.ac.uk/ultra/courses/_117163_1/outline). These course pages are where you will find the materials for the practical sessions. Each practical session will have its own page of instructions released throughout the semester. Instructions can also be downloaded in Word/PDF format should you prefer.
 
-This page outlines how each practical session is set up. Before you begin in Week 1, you should also check out the [guidelines](arm0_setup.qmd) for setting up your workspace for this module.
+This page outlines how each practical session is set up. Before you begin in Week 1, you should also check out the [guidelines](0_setup.qmd) for setting up your workspace for this module.
 
 # Practical format
 
 We have a one-hour practical timetabled each week (typically 1pm or 3pm on Thursdays, PS/A/203). Each session has tasks for you to complete independently, with the session lead available to support and answer questions throughout.
 
-![Artwork by \@allison_horst](images/ah_Rlearners.png){alt="Artwork by @allison_horst" fig-alt="Header text \"R learners\" above five friendly monsters holding up signs that together read “we believe in you.”" fig-align="center" width="497"}
+![Artwork by \@allison_horst](images/ah_Rlearners.png){fig-alt="Header text \"R learners\" above five friendly monsters holding up signs that together read “we believe in you.”" fig-align="center" width="497"}
 
 ## Preparation
 
@@ -29,7 +29,7 @@ You can count on getting stuck at various points during the practical sessions. 
 3.  Chat to the person next to you—maybe they can spot something in your code that you can't see?
 4.  Put your hand up, and we'll come over to help!
 
-![Artwork by \@allison_horst](images/ah_livetroubleshooting.png){alt="Artwork by @allison_horst" fig-alt="A little monster in a cool black jacket and sunglasses, leaning casually against a fence with a sign reading \"Warning! Live troubleshooting!\"" fig-align="center" width="329"}
+![Artwork by \@allison_horst](images/ah_livetroubleshooting.png){fig-alt="A little monster in a cool black jacket and sunglasses, leaning casually against a fence with a sign reading \"Warning! Live troubleshooting!\"" fig-align="center" width="329"}
 
 ## Challenge yourself!
 
