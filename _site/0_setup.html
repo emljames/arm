@@ -25,7 +25,6 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -72,10 +71,10 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -97,10 +96,17 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./0_setup.html" aria-current="page"> 
 <span class="menu-text">Set-up steps</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./1_intro.html"> 
-<span class="menu-text">W1: Introduction</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weekly-content" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Weekly content</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-weekly-content">    
+        <li>
+    <a class="dropdown-item" href="./1_intro.html">
+ <span class="dropdown-text">W1: Introduction</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -109,55 +115,77 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Getting set up for the module</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Emma James </p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Outline</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#file-storage" id="toc-file-storage" class="nav-link" data-scroll-target="#file-storage"><span class="header-section-number">2</span> File storage</a>
+  <ul class="collapse">
+  <li><a href="#set-up-your-folders" id="toc-set-up-your-folders" class="nav-link" data-scroll-target="#set-up-your-folders"><span class="header-section-number">2.1</span> Set up your folders</a></li>
+  <li><a href="#initiate-an-r-project" id="toc-initiate-an-r-project" class="nav-link" data-scroll-target="#initiate-an-r-project"><span class="header-section-number">2.2</span> Initiate an R Project</a></li>
+  <li><a href="#moving-forwards" id="toc-moving-forwards" class="nav-link" data-scroll-target="#moving-forwards"><span class="header-section-number">2.3</span> Moving forwards</a></li>
+  </ul></li>
+  <li><a href="#rstudio-settings" id="toc-rstudio-settings" class="nav-link" data-scroll-target="#rstudio-settings"><span class="header-section-number">3</span> RStudio settings</a>
+  <ul class="collapse">
+  <li><a href="#saving-the-workspace" id="toc-saving-the-workspace" class="nav-link" data-scroll-target="#saving-the-workspace"><span class="header-section-number">3.1</span> Saving the workspace</a></li>
+  <li><a href="#rainbow-parentheses" id="toc-rainbow-parentheses" class="nav-link" data-scroll-target="#rainbow-parentheses"><span class="header-section-number">3.2</span> Rainbow parentheses</a></li>
+  </ul></li>
+  <li><a href="#youre-now-ready-to-go" id="toc-youre-now-ready-to-go" class="nav-link" data-scroll-target="#youre-now-ready-to-go"><span class="header-section-number">4</span> You’re now ready to go!</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="0_setup.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="0_setup.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="0_setup.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="0_setup.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Getting set up for the module</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Emma James </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>You should complete these brief set-up steps first before you begin the practical sessions for the Advanced Research Methods module.</p>
 <p>These steps are critically important to avoid encountering issues later on. That is, the instructions for future practical sessions assume that you have set up R in this way. If you switch devices later on (e.g., if you are working on university PC, but later decide to follow-up on some practical activities on your own laptop), you should come back to this page and make sure that you have completed these steps.</p>
 </section>
-<section id="file-storage" class="level1">
-<h1>File storage</h1>
+<section id="file-storage" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> File storage</h1>
 <p>When you want to input and output files from R, you will need to tell R exactly where on your computer to find it. This can be a pain for two reasons:</p>
 <ol type="1">
 <li>Filepaths can be long and faffy to work with.</li>
 <li>If you want to use your script elsewhere or share it with someone else, the script will need to be edited again, which means more faff.</li>
 </ol>
 <p>We will get around this issue by setting up our practical work as an <em>R Project.</em> This will mean that R knows the file location we are working in, and we can keep all our datasets and analysis scripts together in one place.</p>
-<section id="set-up-your-folders" class="level2">
-<h2 class="anchored" data-anchor-id="set-up-your-folders">Set up your folders</h2>
+<section id="set-up-your-folders" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="set-up-your-folders"><span class="header-section-number">2.1</span> Set up your folders</h2>
 <p>Let’s first create a folder to store all of your practical work.</p>
 <p>1) Open the file browser on your computer. On Windows, you can do this by clicking <em>Start &gt;&gt; File Explorer</em>.</p>
 <p>2) Navigate to your <em>Documents</em> folder.</p>
@@ -178,8 +206,8 @@ Tip
 </div>
 <p>When you download datasets for the practicals in the future, you should save them in your data folder. Similarly, when you create scripts in each practical, save them in the scripts folder.</p>
 </section>
-<section id="initiate-an-r-project" class="level2">
-<h2 class="anchored" data-anchor-id="initiate-an-r-project">Initiate an R Project</h2>
+<section id="initiate-an-r-project" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="initiate-an-r-project"><span class="header-section-number">2.2</span> Initiate an R Project</h2>
 <p>Now let’s tell R where we want to work during these practicals.</p>
 <p>1) Open RStudio<em>.</em></p>
 <p>2) At the top of the window, click <em>File &gt;&gt; New Project…</em></p>
@@ -195,8 +223,8 @@ Tip
 </div>
 <p>If it doesn’t, retrace your steps and try again. If it still doesn’t work, put your hand up and ask for help.</p>
 </section>
-<section id="moving-forwards" class="level2">
-<h2 class="anchored" data-anchor-id="moving-forwards">Moving forwards</h2>
+<section id="moving-forwards" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="moving-forwards"><span class="header-section-number">2.3</span> Moving forwards</h2>
 <p>The instructions for the practicals will assume that you have set up R in this way. We will follow three key principles:</p>
 <p>1) Open the R Project at the start of every session. You can do this by double clicking it from your file browser, or clicking <em>File &gt;&gt; Open Project…</em> from within RStudio.</p>
 <p>2) Save the data files in the data folder, once you have downloaded them from the VLE.</p>
@@ -204,11 +232,11 @@ Tip
 <p>More on what these mean in the remainder of Practical 1!</p>
 </section>
 </section>
-<section id="rstudio-settings" class="level1">
-<h1>RStudio settings</h1>
+<section id="rstudio-settings" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> RStudio settings</h1>
 <p>There are a few other settings that can be useful to change when you first begin working in RStudio.</p>
-<section id="saving-the-workspace" class="level2">
-<h2 class="anchored" data-anchor-id="saving-the-workspace">Saving the workspace</h2>
+<section id="saving-the-workspace" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="saving-the-workspace"><span class="header-section-number">3.1</span> Saving the workspace</h2>
 <p>One irritating default of RStudio is that it saves everything automatically on exiting. This might sound like a great idea, but in reality it can mean that you have a very messy workspace and that mistakes can emerge from using old material. To turn this off (highly recommended):</p>
 <p>1) At the top of RStudio, click <em>Tools &gt;&gt; Global Options…</em></p>
 <p>2) On the <em>General</em> panel that should open in the window, there is a section titled <em>Workspace.</em></p>
@@ -221,8 +249,8 @@ Tip
 </figure>
 </div>
 </section>
-<section id="rainbow-parentheses" class="level2">
-<h2 class="anchored" data-anchor-id="rainbow-parentheses">Rainbow parentheses</h2>
+<section id="rainbow-parentheses" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="rainbow-parentheses"><span class="header-section-number">3.2</span> Rainbow parentheses</h2>
 <p>Sometimes we will need to wrap things inside multiple nested brackets. You don’t need to worry about what this means for now, but whilst we’re on the settings, we might as well set up one of my favourite most useful features: rainbow parentheses! This setting colour codes your brackets so that you can tell which ones are paired together. And who doesn’t want a bit of colour on their scripts?!</p>
 <p>1) On the Global Options… window you have open, click on “Code” down the left hand side.</p>
 <p>2) Click the “Display” tab at the op.</p>
@@ -237,8 +265,8 @@ Tip
 <p>As for what this has done? Well, you’ll just have to wait and see as we get writing scripts…</p>
 </section>
 </section>
-<section id="youre-now-ready-to-go" class="level1">
-<h1>You’re now ready to go!</h1>
+<section id="youre-now-ready-to-go" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> You’re now ready to go!</h1>
 <p>Now proceed with the first Practical session: <strong>1_Introduction</strong>.</p>
 
 
@@ -331,6 +359,11 @@ Tip
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -645,6 +678,25 @@ Tip
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./LICENSE.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

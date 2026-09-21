@@ -60,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -107,10 +106,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -132,10 +131,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./0_setup.html"> 
 <span class="menu-text">Set-up steps</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./1_intro.html" aria-current="page"> 
-<span class="menu-text">W1: Introduction</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weekly-content" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Weekly content</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-weekly-content">    
+        <li>
+    <a class="dropdown-item" href="./1_intro.html">
+ <span class="dropdown-text">W1: Introduction</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -144,42 +150,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to R</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Emma James </p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Outline</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#navigating-rstudio-and-creating-objects" id="toc-navigating-rstudio-and-creating-objects" class="nav-link" data-scroll-target="#navigating-rstudio-and-creating-objects"><span class="header-section-number">2</span> Navigating RStudio and creating objects</a>
+  <ul class="collapse">
+  <li><a href="#top-left-scripts" id="toc-top-left-scripts" class="nav-link" data-scroll-target="#top-left-scripts"><span class="header-section-number">2.1</span> Top left: Scripts</a></li>
+  <li><a href="#bottom-left-console" id="toc-bottom-left-console" class="nav-link" data-scroll-target="#bottom-left-console"><span class="header-section-number">2.2</span> Bottom left: Console</a></li>
+  <li><a href="#top-right-environment" id="toc-top-right-environment" class="nav-link" data-scroll-target="#top-right-environment"><span class="header-section-number">2.3</span> Top right: Environment</a></li>
+  <li><a href="#bottom-right-other-things" id="toc-bottom-right-other-things" class="nav-link" data-scroll-target="#bottom-right-other-things"><span class="header-section-number">2.4</span> Bottom right: Other things!</a></li>
+  </ul></li>
+  <li><a href="#creating-a-script-and-loading-in-data" id="toc-creating-a-script-and-loading-in-data" class="nav-link" data-scroll-target="#creating-a-script-and-loading-in-data"><span class="header-section-number">3</span> Creating a script and loading in data</a>
+  <ul class="collapse">
+  <li><a href="#opening-your-r-project" id="toc-opening-your-r-project" class="nav-link" data-scroll-target="#opening-your-r-project"><span class="header-section-number">3.1</span> Opening your R Project</a></li>
+  <li><a href="#creating-a-script" id="toc-creating-a-script" class="nav-link" data-scroll-target="#creating-a-script"><span class="header-section-number">3.2</span> Creating a script</a></li>
+  <li><a href="#loading-data-into-r" id="toc-loading-data-into-r" class="nav-link" data-scroll-target="#loading-data-into-r"><span class="header-section-number">3.3</span> Loading data into R</a></li>
+  </ul></li>
+  <li><a href="#calculating-summary-statistics" id="toc-calculating-summary-statistics" class="nav-link" data-scroll-target="#calculating-summary-statistics"><span class="header-section-number">4</span> Calculating summary statistics</a></li>
+  <li><a href="#running-inferential-tests" id="toc-running-inferential-tests" class="nav-link" data-scroll-target="#running-inferential-tests"><span class="header-section-number">5</span> Running inferential tests</a>
+  <ul class="collapse">
+  <li><a href="#running-a-t-test" id="toc-running-a-t-test" class="nav-link" data-scroll-target="#running-a-t-test"><span class="header-section-number">5.1</span> Running a t-test</a></li>
+  <li><a href="#running-a-correlation" id="toc-running-a-correlation" class="nav-link" data-scroll-target="#running-a-correlation"><span class="header-section-number">5.2</span> Running a correlation</a></li>
+  <li><a href="#running-an-anova" id="toc-running-an-anova" class="nav-link" data-scroll-target="#running-an-anova"><span class="header-section-number">5.3</span> Running an ANOVA</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">6</span> Summary</a>
+  <ul class="collapse">
+  <li><a href="#challenge-yourself" id="toc-challenge-yourself" class="nav-link" data-scroll-target="#challenge-yourself"><span class="header-section-number">6.1</span> Challenge yourself</a></li>
+  <li><a href="#further-learning" id="toc-further-learning" class="nav-link" data-scroll-target="#further-learning"><span class="header-section-number">6.2</span> Further learning</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="1_intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="1_intro.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="1_intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="1_intro.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Introduction to R</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Emma James </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>The overarching aim of this practical is to get you used to the R environment. The best way to do this is to start with something you already know about: basic statistics from your first and second year. Along the way we will introduce basic concepts common to all programming languages, with no prior programming knowledge assumed.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Learning objectives">
 <div class="callout-header d-flex align-content-center">
@@ -203,8 +244,8 @@ Learning objectives
 </div>
 <hr>
 </section>
-<section id="navigating-rstudio-and-creating-objects" class="level1">
-<h1>Navigating RStudio and creating objects</h1>
+<section id="navigating-rstudio-and-creating-objects" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Navigating RStudio and creating objects</h1>
 <p>Here is the main window of <em>RStudio</em> (shown on a Windows PC, although it should look very similar on a Mac!). You can see that it has four different sections.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -212,13 +253,13 @@ Learning objectives
 <figcaption>Default RStudio layout</figcaption>
 </figure>
 </div>
-<section id="top-left-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="top-left-scripts">Top left: Scripts</h2>
+<section id="top-left-scripts" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="top-left-scripts"><span class="header-section-number">2.1</span> Top left: Scripts</h2>
 <p>In the top left corner of the image is a quadrant for your scripts. You won’t see this quadrant when you first open R, but it will show when you create one in Section 2.</p>
 <p>Scripts are like lists of instructions for the computer to follow. You can save them just like a Word document, and this makes it easy to set up complex analyses without typing them in by hand each time. Throughout these practicals, you will create several scripts that you can later adapt and reuse in running statistical analyses.</p>
 </section>
-<section id="bottom-left-console" class="level2">
-<h2 class="anchored" data-anchor-id="bottom-left-console">Bottom left: Console</h2>
+<section id="bottom-left-console" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="bottom-left-console"><span class="header-section-number">2.2</span> Bottom left: Console</h2>
 <p>The lower left window is called the <em>Console</em>. This is where the magic happens! Here, you can type in individual commands to ask the computer to do something. You can use it just like a calculator: try clicking in the console and typing <code>20 + 57</code> (or indeed any other sum you choose!). If you press the Enter/Return key, you should see the answer printed below.</p>
 <p>We can also instruct the computer to create an “object” (or “variable”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>). An object is like a box that you can store information in. Some objects are big, such as large datasets that contain many numbers or even chunks of text. Others might contain only one number.</p>
 <p>First, let’s create an object called <code>a</code>, and give it the value 5. Click on the Console area and type:</p>
@@ -227,8 +268,8 @@ Learning objectives
 </div>
 <p>Then hit the Enter/Return key to run it. You will see the arrows <code>&lt;-</code> a lot in R: they are used to assign (or store) everything on the right to the name that you provide on the left<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </section>
-<section id="top-right-environment" class="level2">
-<h2 class="anchored" data-anchor-id="top-right-environment">Top right: Environment</h2>
+<section id="top-right-environment" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="top-right-environment"><span class="header-section-number">2.3</span> Top right: Environment</h2>
 <p>If you have created an object, <code>a</code>, you should now see that it has appeared in the top right section, in the <em>Environment</em> tab, with the assigned value 5. This means that we can now treat <code>a</code> as though it is a number: we can run mathematical operations on the object, and get out an answer that depends on the value assigned. You can try this now by typing <code>a*2</code> into the console to multiply it by two, or <code>a^2</code> to square it.</p>
 <p>So why not just type 5^2 in the first place? The reason objects are useful is that we can change and update their values, or include many numbers in them. Let’s make a new object called <code>b</code> with the numbers 1-5, and see what happens when we square it:</p>
 <div class="cell">
@@ -241,17 +282,17 @@ Learning objectives
 <p>You can see that we now get a list of the squares of all the elements.</p>
 <p>We will use objects to store and manipulate data in <em>R</em>, similar to how we might work on a spreadsheet or SPSS file. You can always inspect the objects you have to hand and the values assigned to them by looking in the Environment panel.</p>
 </section>
-<section id="bottom-right-other-things" class="level2">
-<h2 class="anchored" data-anchor-id="bottom-right-other-things">Bottom right: Other things!</h2>
+<section id="bottom-right-other-things" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="bottom-right-other-things"><span class="header-section-number">2.4</span> Bottom right: Other things!</h2>
 <p>The bottom right window has several sections that can be navigated by clicking on the tabs at the top. <em>Files</em> shows the files in the directory that we are working from, <em>Plots</em> will contain any figures that we create, <em>Packages</em> contains a list of extensions that will enable us to do different types of statistics, and the <em>Help</em> table will show the help pages for a particular function if we ask for them (we’ll do this a lot!).</p>
 <hr>
 </section>
 </section>
-<section id="creating-a-script-and-loading-in-data" class="level1">
-<h1>Creating a script and loading in data</h1>
+<section id="creating-a-script-and-loading-in-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Creating a script and loading in data</h1>
 <p>In this section, we will create a script to tell us about the mean, median, standard deviation, and standard error of some data. Rather than type the data in by hand, we will load a dataset from a file—just as we would if we had run an experiment.</p>
-<section id="opening-your-r-project" class="level2">
-<h2 class="anchored" data-anchor-id="opening-your-r-project">Opening your R Project</h2>
+<section id="opening-your-r-project" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="opening-your-r-project"><span class="header-section-number">3.1</span> Opening your R Project</h2>
 <p>Make sure that you are working in the R Project <strong>ARM_Practicals</strong>. This should be the case if you have just completed the 0_SetUp instructions. If not, or if you closed RStudio in between, you can open this by clicking <em>File &gt;&gt; Open Project…</em> and navigating to the project file we created.</p>
 <p>Remember, you should be able to see this in the top-right corner of the RStudio window.</p>
 <div class="quarto-figure quarto-figure-left">
@@ -261,12 +302,12 @@ Learning objectives
 </figure>
 </div>
 </section>
-<section id="creating-a-script" class="level2">
-<h2 class="anchored" data-anchor-id="creating-a-script">Creating a script</h2>
+<section id="creating-a-script" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="creating-a-script"><span class="header-section-number">3.2</span> Creating a script</h2>
 <p>Look to the top left of your RStudio window. Click the button that has a white square and cross in a green circle (or alternatively, click <em>File &gt;&gt; New File &gt;&gt; R Script</em>). Now you have a script open, let’s save it so that we can keep saving our progress as we go. Click <em>File &gt;&gt; Save As…</em> and navigate to the scripts folder inside the ARM_Practicals folder you created. Once you are in this folder, save your script with the name <strong>ARM1_intro.R</strong>.</p>
 </section>
-<section id="loading-data-into-r" class="level2">
-<h2 class="anchored" data-anchor-id="loading-data-into-r">Loading data into R</h2>
+<section id="loading-data-into-r" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="loading-data-into-r"><span class="header-section-number">3.3</span> Loading data into R</h2>
 <p>There is a file in the Lecture 1 section of the VLE called <strong>ARM1_data1_gamers.csv</strong>. This is a .csv file, which is a readily used data storage format that can be opened by many different software<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Download this file, and save it in the folder we previously created (likely <em>Documents/ARM_Practicals/data/</em>).</p>
 <p>At the top of your script file, you can now instruct R to read in the dataset by adding the following line:</p>
 <div class="cell">
@@ -286,8 +327,8 @@ Learning objectives
 <hr>
 </section>
 </section>
-<section id="calculating-summary-statistics" class="level1">
-<h1>Calculating summary statistics</h1>
+<section id="calculating-summary-statistics" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Calculating summary statistics</h1>
 <p>R has many built in functions to calculate basic descriptive statistics. Now you have loaded your data, try adding the following line to your script:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -331,10 +372,10 @@ Take note! (literally)
 </div>
 <hr>
 </section>
-<section id="running-inferential-tests" class="level1">
-<h1>Running inferential tests</h1>
-<section id="running-a-t-test" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-t-test">Running a t-test</h2>
+<section id="running-inferential-tests" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Running inferential tests</h1>
+<section id="running-a-t-test" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="running-a-t-test"><span class="header-section-number">5.1</span> Running a t-test</h2>
 <p>In Years 1 and 2, you learned about some inferential statistics that test the relationship between two variables.</p>
 <p>One way to analyse the data that you have loaded is to run a t-test to test the difference in means between two groups. Let’s test the hypothesis that gamers versus non-gamers have different working memory capacity. You can do this by adding the following line of code to your script:</p>
 <div class="cell">
@@ -359,8 +400,8 @@ mean in group n mean in group y
 </div>
 <p>The output tells us the test that we have run, and provides us with the necessary values for reporting on the third line of output: the <em>t</em>-statistic, degrees of freedom, and <em>p-</em>value. You can see here that there is a significant difference between the two groups as the <em>p</em> &lt; .05. The output also handily summarises the mean working memory capacity for each group.</p>
 </section>
-<section id="running-a-correlation" class="level2">
-<h2 class="anchored" data-anchor-id="running-a-correlation">Running a correlation</h2>
+<section id="running-a-correlation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="running-a-correlation"><span class="header-section-number">5.2</span> Running a correlation</h2>
 <p>Another simple analysis for testing the relationship between two variables is a correlation, which we can use to test the strength of association between two continuous variables. Let’s test how working memory capacity changes with age, by typing the following line.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age_years <span class="sc">+</span> wmc, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -384,8 +425,8 @@ sample estimates:
 <p>Again, the output tells us the test that has been done, and shows us that there is a significant relationship between the two variables (<em>p</em> = 0.02). The final line of output, labelled as “cor”, is the correlation coefficient, showing a negative correlation between the two variables: as age increases, working memory decreases.</p>
 <p>These calls for statistical tests that we have just run are called <em>functions.</em> We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., <code>help(t.test)</code> or <code>help(cor.test)</code> in the <em>Console</em> (this is a bit meta, we use the <code>help()</code> function to ask for help about other functions)<em>.</em> This should bring up some helpful information in the bottom right window. The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument <code>method = "spearman"</code> inside the brackets. Try this now.</p>
 </section>
-<section id="running-an-anova" class="level2">
-<h2 class="anchored" data-anchor-id="running-an-anova">Running an ANOVA</h2>
+<section id="running-an-anova" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="running-an-anova"><span class="header-section-number">5.3</span> Running an ANOVA</h2>
 <p>Finally, let’s try running a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what <em>type</em> of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.</p>
 <p>Make sure that you have downloaded the data from the VLE and saved it in your data folder. Then let’s load it into R and assign it to an object called <code>type_dat</code>. Inspect the dataset to see the game categories.</p>
 <div class="cell">
@@ -435,11 +476,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <hr>
 </section>
 </section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
+<section id="summary" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Summary</h1>
 <p>We’ve just introduced some important concepts in R, and gone through how to do some basic statistical tests. In fact, we did many of the things you already know about, but in only about 15 lines of code! Of course, R offers many more sophisticated options, e.g.&nbsp;for factorial ANOVAs, post-hoc tests, regression and so on. You are welcome to find out more about how to do these yourselves.</p>
-<section id="challenge-yourself" class="level2">
-<h2 class="anchored" data-anchor-id="challenge-yourself">Challenge yourself</h2>
+<section id="challenge-yourself" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">6.1</span> Challenge yourself</h2>
 <p>If you have completed the practical in good time and want to challenge yourself, have a go at the following independent exercise. Use the first dataset (ARM1_data1_gamers.csv) to look more closely at the number of hours played.</p>
 <ul>
 <li>Use the descriptive statistics functions to work out the mean and standard deviation of this variable.</li>
@@ -448,8 +489,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </ul>
 <p>You might well encounter some errors along the way, and there are multiple ways to solve the problem. Try using the R help files or googling to fix the problem for yourself: this is a major part of coding! The solution(s) will be released next week.</p>
 </section>
-<section id="further-learning" class="level2">
-<h2 class="anchored" data-anchor-id="further-learning">Further learning</h2>
+<section id="further-learning" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="further-learning"><span class="header-section-number">6.2</span> Further learning</h2>
 <p><strong>You do <u>not</u> need to learn R to do well in this module</strong>, but it’s one way of getting to grips with different statistical techniques and many students enjoy the challenge. If you’re serious about learning <em>R</em>, then the following DataCamp chapters are relevant to this week’s content and will help to consolidate the material ready for the practicals ahead. You will need to sign up for a free account using the link from the VLE Module Information page.</p>
 <ul>
 <li><a href="https://app.datacamp.com/learn/courses/free-introduction-to-r">Introduction to R</a></li>
@@ -572,6 +613,11 @@ How’s it going?
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -886,6 +932,25 @@ How’s it going?
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./LICENSE.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
