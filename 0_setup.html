@@ -89,8 +89,8 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./home.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./0_setup.html" aria-current="page"> 
@@ -178,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="downloading-r-and-rstudio" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Downloading R and RStudio</h1>
-<p>If you are working on a university machine (recommended), R and RStudio should already be set up for use. Always open RStudio to work in R.</p>
+<p>If you are working on a university machine (recommended), R and RStudio are already installed. <strong>Always open RStudio to work in R</strong>.</p>
 <p>If you want to use R on your own computer, you will need to follow these links to install R and RStudio separately:</p>
 <ul>
 <li><a href="https://www.stats.bris.ac.uk/R/">Install R</a></li>
@@ -187,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="file-storage" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> File storage</h1>
-<p>When you want to input and output files, you will need to tell R exactly where on your computer to find it. This can be a pain for two reasons:</p>
+<p>When you want to input and output files, you will need to tell R exactly where on your computer to find them. This can be a pain because:</p>
 <ol type="1">
 <li>Filepaths can be long and faffy to work with.</li>
 <li>If you want to use your script elsewhere or share it with someone else, the script will need to be edited again, which means more faff.</li>
@@ -212,7 +212,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>Note that R is case sensitive, meaning that if you capitalise letters here then you will also need to be specific in your capitalisation in the scripts. It is a good idea to adopt a consistent approach to avoid later issues. Here we have used lower case, and strongly advise you to do the same so that you don’t get confused later on.</em></p>
+<p><em>R is case-sensitive, meaning that if you capitalise letters here then you will also need to be specific in your capitalisation in the scripts. It is a good idea to adopt a consistent approach to avoid later issues. Here we have used lower case, and strongly advise you to do the same so that you don’t get confused later on.</em></p>
 </div>
 </div>
 <p>When you download datasets for the practicals in the future, you should save them in your data folder. Similarly, when you create scripts in each practical, save them in the scripts folder.</p>
@@ -223,14 +223,14 @@ Tip
 <ol type="1">
 <li><p>Open RStudio<em>.</em></p></li>
 <li><p>At the top of the window, click <em>File &gt;&gt; New Project…</em></p></li>
-<li><p>After a bit of thinking (be patient!), a “New Project Wizard” window should appear. Click the <em>Existing Directory</em> option in the middle, to associate this new project with an existing working directory. We choose this option because we have already set up our folders manually in the previous step.</p></li>
+<li><p>After a bit of thinking (be patient!), a “New Project Wizard” window should appear. Click the <em>Existing Directory</em> option in the middle, to associate this new project with an existing working directory. We choose this option because we have already set up our folder in the previous step.</p></li>
 <li><p>On the next window, click “Browse…” and then navigate to your ARM_Practicals folder. Once you are in it (and can see your data/scripts folders), click “Open”.</p></li>
 <li><p>Click “Create Project”.</p></li>
 </ol>
-<p>The name of the R Project you are working in should now show in the top right hand corner of your window, like this:</p>
+<p>The name of the R Project you are working in should now show in the top right hand corner of your window.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/RProject.png" class="img-fluid figure-img" alt="An R cube icon from the top right-hand corner of the screen, accompanied by the text &quot;ARM_Practicals&quot; to show the project we have open."></p>
+<p><img src="images/RProject.png" class="img-fluid figure-img" alt="The top-right hand corner of the screen shows the name of the current R Project"></p>
 <figcaption>The current R Project</figcaption>
 </figure>
 </div>
@@ -252,7 +252,7 @@ Tip
 <p>There are a few other settings that can be useful to change when you first begin working in RStudio.</p>
 <section id="saving-the-workspace" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="saving-the-workspace"><span class="header-section-number">4.1</span> Saving the workspace</h2>
-<p>One irritating default of RStudio is that it saves everything automatically on exiting. This might sound like a great idea, but in reality it can mean that you have a very messy workspace and that mistakes can emerge from using old material. To turn this off (highly recommended):</p>
+<p>An irritating default of RStudio is that it saves everything automatically on exiting. This might sound like a great idea, but in reality it can mean that you have a very messy workspace and that mistakes emerge from using old material. It is highly recommended that you turn this off by taking the following steps:</p>
 <ol type="1">
 <li><p>At the top of RStudio, click <em>Tools &gt;&gt; Global Options…</em></p></li>
 <li><p>On the <em>General</em> panel that should open in the window, there is a section titled <em>Workspace.</em></p></li>
@@ -268,10 +268,10 @@ Tip
 </section>
 <section id="rainbow-parentheses" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="rainbow-parentheses"><span class="header-section-number">4.2</span> Rainbow parentheses</h2>
-<p>Sometimes we will need to wrap things inside multiple nested brackets. You don’t need to worry about what this means for now, but whilst we’re on the settings, we might as well set up one of my favourite most useful features: rainbow parentheses! This setting colour codes your brackets so that you can tell which ones are paired together. And who doesn’t want a bit of colour on their scripts?!</p>
+<p>Sometimes we will need to wrap things inside multiple nested brackets. You don’t need to worry about what this means for now, but while we’re on the settings, we can set up one of my favourite RStudio features: rainbow parentheses! This setting colour codes your brackets so that you can tell which ones are paired together. And who doesn’t want a bit of colour on their scripts?!</p>
 <ol type="1">
-<li><p>On the Global Options… window you have open, click on “Code” down the left hand side.</p></li>
-<li><p>Click the “Display” tab at the op.</p></li>
+<li><p>On the <em>Global Options…</em> window you have open, click on “Code” down the left hand side.</p></li>
+<li><p>Click the “Display” tab at the top.</p></li>
 <li><p>Under syntax, check the box that says “Use rainbow parentheses”.</p></li>
 <li><p>Then click “Apply”, and/or “OK” to close the window.</p></li>
 </ol>
@@ -286,7 +286,7 @@ Tip
 </section>
 <section id="youre-now-ready-to-go" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> You’re now ready to go!</h1>
-<p>Now proceed with the first Practical session: <strong>1_Introduction</strong>.</p>
+<p>Now proceed with the <a href="https://emljames.github.io/arm/1_intro.html">first Practical session</a>.</p>
 
 
 </section>

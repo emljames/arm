@@ -124,8 +124,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./home.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Welcome</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./0_setup.html"> 
@@ -222,10 +222,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>The aim of this practical is to get used to the R environment. The best way to do this is to start with something you already know about: basic statistics from your first and second year. Along the way we will introduce basic concepts common to all programming languages, with no prior programming knowledge assumed.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Learning objectives">
+<div class="callout callout-style-default callout-note callout-titled" title="Learning objectives">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Learning objectives
@@ -234,9 +234,9 @@ Learning objectives
 <div class="callout-body-container callout-body">
 <p>By the end of this practical, you will be able to:</p>
 <ol type="1">
-<li>Use <em>RStudio</em> to write, comment, and execute lines of code.</li>
-<li>Create and manipulate objects in <em>R.</em></li>
-<li>Load data files into <em>R.</em></li>
+<li>Use RStudio to write, comment, and execute lines of code.</li>
+<li>Create and manipulate objects in R<em>.</em></li>
+<li>Load data files into R.</li>
 <li>Calculate basic summary statistics.</li>
 <li>Implement common inferential tests, including a t-test, correlation, and ANOVA.</li>
 </ol>
@@ -250,8 +250,8 @@ Learning objectives
 <p>RStudio will generally show four different sections (three on first opening), which we describe in this first part of the practical.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/RStudio_window.PNG" class="img-fluid figure-img" alt="RStudio consists of four panels, for scripts, the console, the environment, and viewing."></p>
-<figcaption>Default RStudio layout</figcaption>
+<p><img src="images/RStudio_window.PNG" class="img-fluid figure-img" alt="The default RStudio layout consists of four panels for scripts, the console, the environment, and viewing."></p>
+<figcaption>The default RStudio layout</figcaption>
 </figure>
 </div>
 <section id="top-left-scripts" class="level2" data-number="2.1">
@@ -273,15 +273,12 @@ Learning objectives
 <section id="top-right-environment" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="top-right-environment"><span class="header-section-number">2.3</span> Top right: Environment</h2>
 <p>If you have created an object, <code>a</code>, it should now appear in the top right section, in the <em>Environment</em> tab. This means that we can now treat <code>a</code> as though it is a number: we can run mathematical operations on the object, and get out an answer that depends on the value assigned. Try this now by typing <code>a*2</code> into the console to multiply it by two, or <code>a^2</code> to square it.</p>
-<p>So why not just type 5^2 in the first place? The reason objects are useful is that we can change and update their values, or include many numbers in them. Let’s make a new object called <code>b</code> with the numbers 1-5, and see what happens when we square it:</p>
+<p>So why not just type <code>5^2</code> in the first place? Objects are useful because we can change and update their values, or include many numbers in them. Let’s make a new object called <code>b</code> with the numbers 1-5, and see what happens when we square it:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>b<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  1  4  9 16 25</code></pre>
 </div>
-</div>
-<p>You can see that we now get a list of the squares of all the elements.</p>
+<p>You should see that we now get a list of the squares of all the elements.</p>
 <p>We will use objects to store and manipulate data in <em>R</em>, similar to how we might work on a spreadsheet or SPSS file. You can always inspect the objects you have to hand and the values assigned to them in the Environment panel.</p>
 </section>
 <section id="bottom-right-other-things" class="level2" data-number="2.4">
@@ -295,8 +292,8 @@ Learning objectives
 <p>In this section, we will create a script to tell us about the mean, median, standard deviation, and standard error of some data. Rather than type the data in by hand, we will load a dataset from a file—just as we would if we had run an experiment.</p>
 <section id="opening-your-r-project" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="opening-your-r-project"><span class="header-section-number">3.1</span> Opening your R Project</h2>
-<p>Make sure that you are working in the R Project <strong>ARM_Practicals</strong>. This should be the case if you have just completed the 0_SetUp instructions. If not, or if you closed RStudio in between, you can open this by clicking <em>File &gt;&gt; Open Project…</em> and navigating to the project file we created.</p>
-<p>Remember, you should be able to see this in the top-right corner of the RStudio window.</p>
+<p>Make sure that you are working in the R Project <strong>ARM_Practicals</strong>. This should be the case if you have just completed the <a href="https://emljames.github.io/arm/0_setup.html">set-up instructions</a> instructions. If not, or if you closed RStudio in between, you can open this by clicking <em>File &gt;&gt; Open Project…</em> and navigating to the project file we created.</p>
+<p>Remember, it should say “ARM_Practicals” in the top-right corner of the RStudio window.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="images/RProject.png" class="img-fluid figure-img" alt="The project name reads &quot;ARM_Practicals&quot;"></p>
@@ -311,14 +308,14 @@ Learning objectives
 </section>
 <section id="loading-data-into-r" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="loading-data-into-r"><span class="header-section-number">3.3</span> Loading data into R</h2>
-<p>There is a file in the Lecture 1 section of the VLE called <strong>ARM1_data1_gamers.csv</strong>. This is a .csv file, which is a readily used data storage format that can be opened by many different software<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Download this file, and save it in the folder we previously created (likely <em>Documents/ARM_Practicals/data/</em>).</p>
+<p>There is a file in the Practical Materials section of the VLE called <strong>ARM1_data1_gamers.csv</strong>. This is a .csv file, which is a readily used data storage format that can be opened in many different software<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Download this file, and save it in the folder we previously created (likely <em>Documents/ARM_Practicals/data/</em>).</p>
 <p>At the top of your script file, you can now instruct R to read in the dataset by adding the following line:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gamer_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM1_data1_gamers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gamer_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM1_data1_gamers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are creating an object in R here called <code>gamer_dat</code>, and using the <code>&lt;-</code> to assign something to it. Here, we want to assign the data file that we load in, so need to instruct it to find and load the data file. We use <code>read.csv()</code> to tell R that we want to load in a csv file. We tell it the file path to where the dataset is stored: the <code>./</code> affirms that we are starting in the current directory (your R project folder), then <code>data/</code> instructs it to look in the data folder, then the final part is the name of the file (including the .csv extension).</p>
 <p>Now you have typed this into your script, you need to execute it. You can do this by highlighting it with your mouse and then clicking ‘Run’ at the top of the script. Alternatively, if your cursor is on the correct line, you can hit Ctrl + Enter on your keyboard.</p>
-<p>If you are successful, you should see an object called <code>gamer_dat</code> appear in the <em>Environment</em> tab. You can see that it has 100 observations (rows) for 5 variables (columns). If you click the little grid to the right of this description, you can inspect the dataset in your top left panel. You should see that the five columns correspond to:</p>
+<p>If you are successful, you should see an object called <code>gamer_dat</code> appear in the <em>Environment</em> tab. The information tells us it has 100 observations (rows) for 5 variables (columns). If you click the little grid to the right of this description, you can inspect the dataset in your top left panel. The five columns of the dataset correspond to:</p>
 <ul>
 <li><strong>ppt_id</strong>: a unique identifying code for each participant</li>
 <li><strong>age_years</strong>: their age in years</li>
@@ -326,7 +323,7 @@ Learning objectives
 <li><strong>hours</strong>: if they do play video games, how many hours they play per week on average (or NA if they don’t, meaning that it’s a missing value)</li>
 <li><strong>wmc</strong>: working memory capacity</li>
 </ul>
-<p><em>This dataset was simulated for the purposes of today’s practical, but was inspired by a <a href="https://doi.org/10.1016/j.heliyon.2023.e19098">research study</a> by Fiona McNab.</em></p>
+<p><em>This dataset was simulated for the purposes of today’s practical, but was inspired by a <a href="https://doi.org/10.1016/j.heliyon.2023.e19098">research study</a> by Dr Fiona McNab.</em></p>
 <hr>
 </section>
 </section>
@@ -334,12 +331,12 @@ Learning objectives
 <h1 data-number="4"><span class="header-section-number">4</span> Calculating summary statistics</h1>
 <p>R has many built in functions to calculate basic descriptive statistics. Now you have loaded your data, try adding the following line to your script:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this section of code, <code>mean()</code> calls the function to calculate the mean statistic. <em>Inside</em> the brackets, you need to tell the function what to calculate the mean of. We’ve referenced this by using the name of the object (i.e., the <code>gamer_dat</code> label we gave the dataset when we loaded it in), and then used the <code>$</code> sign to specify which variable of the object we are interested in (here, <code>wmc</code>).</p>
 <p>Execute the line of code by clicking run or Ctrl+Enter, as above. You should see that your line of script now appears in the Console, followed by the answer as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.43</code></pre>
 </div>
@@ -347,12 +344,12 @@ Learning objectives
 <p>If it hasn’t worked, go back over the previous instructions carefully and see if you missed a step. The console will contain any error messages in red. If you are still stuck, raise your hand.</p>
 <p>You can calculate some other descriptive statistics, and create a histogram as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gamer_dat<span class="sc">$</span>wmc)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(gamer_dat<span class="sc">$</span>wmc))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(gamer_dat<span class="sc">$</span>wmc)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="fu">length</span>(gamer_dat<span class="sc">$</span>wmc))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>These lines compute the median, standard deviation and standard error, and then plot a histogram. If you select your entire script and run it, you will see these values appear in the <em>Console</em> and a histogram of the data appear in the <em>Plots</em> window. Well done – you have just written your first <em>R</em> script!<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>These lines compute the median, standard deviation and standard error, and then plot a histogram. If you select your entire script and run it, you will see these values appear in the <em>Console</em> and a histogram of the data appear in the <em>Plots</em> window. Well done—you have just written your first <em>R</em> script!<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Take note! (literally)">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -364,14 +361,14 @@ Take note! (literally)
 </div>
 <div class="callout-body-container callout-body">
 <p>Before we go any further, we should talk about good coding practices. It’s very helpful if you can add comments to your code to say what you are doing in each section. This is helpful as a learner, allowing you look back at the scripts that we write in these practicals without having to match it up with this worksheet. It’s also good practice as you write more advanced scripts: future you will be very grateful for notes explaining what you are doing at each step.</p>
-<p>You can add comments to your script by using the # symbol. When R encounters the # symbol, it knows not to try and interpret the remainder of that line as code. This means that you can either write comments on their own line or directly next to code, like in the example below.</p>
-<p>Try it now: add comments to the code you have already written so that future you will remember what this code does. You should try to do this throughout all the practicals: I have often written basic comments alongside sections of code, but you can edit these and add more notes to your scripts to help you to remember key things.</p>
+<p>You can add comments to your script by using the # symbol. When R encounters the # symbol, it knows not to try and interpret the remainder of that line as code. This means that you can either write comments on their own line or directly next to code, like in the examples below.</p>
+<p>Try it now: add comments to the code you have already written so that future you will remember what this code does. You should do this throughout all the practical activities: I have often written basic comments alongside sections of code, but you can edit these and add more notes to your own scripts to help you remember key things.</p>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate descriptive statistics </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)  <span class="co"># mean </span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)    <span class="co"># standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate descriptive statistics </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)  <span class="co"># mean </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(gamer_dat<span class="sc">$</span>wmc)    <span class="co"># standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -382,59 +379,46 @@ Take note! (literally)
 <p>In Years 1 and 2, you learned about some inferential statistics that test the relationship between two variables.</p>
 <p>Let’s test the hypothesis that gamers versus non-gamers have different working memory capacity in our dataset. We can use a t-test to analyse the difference in means between two groups. Add the following line of code to your script:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(wmc <span class="sc">~</span> gamer, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(wmc <span class="sc">~</span> gamer, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Within the <code>t.test()</code> call, we have asked for our dependent variable (<code>wmc</code>) to be predicted by (<code>~</code>) the variable <code>gamer</code>, which we have seen has two levels (<em>y, n</em>). We don’t actually have objects called <code>wmc</code> and <code>gamer</code> in our R environment, so we specify that it should look for these within the <code>gamer_dat</code> dataset.</p>
+<p>Within the <code>t.test()</code> call, we have asked for our dependent variable (<code>wmc</code>) to be predicted by (<code>~</code>) the variable <code>gamer</code>, which we know has two levels in the dataset (<em>y, n</em>). We don’t actually have objects called <code>wmc</code> and <code>gamer</code> in our R environment, so we need to specify that it should look for these within the <code>gamer_dat</code> dataset.</p>
 <p>Execute the line of code. The output should reiterate the test you have run, and provide the necessary values for reporting on the third line of output: the <em>t</em>-statistic, degrees of freedom, and <em>p-</em>value.</p>
 <p>Is there a significant difference between the two groups (<em>p</em> &lt; .05)? What is the mean working memory capacity for each group?</p>
 </section>
 <section id="running-a-correlation" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="running-a-correlation"><span class="header-section-number">5.2</span> Running a correlation</h2>
-<p>Another simple analysis for testing the relationship between two variables is a correlation: the strength of association between two continuous variables. Let’s test how working memory capacity changes with age by typing the following line.</p>
+<p>Another simple analysis for testing the relationship between two variables is a correlation: the strength of association between two continuous variables. Let’s test how working memory capacity relates to age by typing and executing the following line.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age_years <span class="sc">+</span> wmc, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age_years <span class="sc">+</span> wmc, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Execute the code.</p>
-<p>Again, the output should tell you the test that has been done. Does the <em>p</em>-value show that there’s a significant relationship between the two? The final line of output (labelled “cor”) is the correlation coefficient. The negative value suggests that as age increases, working memory decreases.</p>
-<p>These calls for statistical tests that we have just run are called <em>functions.</em> We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., <code>help(t.test)</code> or <code>help(cor.test)</code> in the <em>Console</em> (this is a bit meta, we use the <code>help()</code> function to ask for help about other functions)<em>.</em> This should bring up some helpful information in the bottom right window.</p>
-<p>The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument <code>method = "spearman"</code> inside the brackets. Try this now.</p>
+<p>Again, the output should tell you the test that has been done. Does the <em>p</em>-value show that there’s a significant relationship between the two? The final line of output (labelled “cor”) is the correlation coefficient. What happens to working memory as age increases?</p>
+<p>::: {.callout-tip title-“Getting help with functions”=““} These calls for statistical tests that we have just run are called <em>functions.</em> We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., <code>help(t.test)</code> or <code>help(cor.test)</code> in the <em>Console</em> (this is a bit meta, we use the <code>help()</code> function to ask for help about other functions)<em>.</em> This should bring up some helpful information in the bottom right window.</p>
+<p>The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument <code>method = "spearman"</code> inside the brackets. Try this now. :::</p>
 </section>
 <section id="running-an-anova" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="running-an-anova"><span class="header-section-number">5.3</span> Running an ANOVA</h2>
-<p>Finally, let’s try running a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what <em>type</em> of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.</p>
+<p>Finally, let’s r a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what <em>type</em> of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.</p>
 <p>Make sure that you have downloaded the data from the VLE and saved it in your data folder. Load it into R and assign it to an object called <code>type_dat</code>. Inspect the dataset to see the game categories.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>type_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM1_data2_gametype.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>type_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM1_data2_gametype.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Given there are three levels of game type, we can no longer use a t-test to compare working memory between groups. Instead, we can use a one-way ANOVA.</p>
 <p>The first step in running an ANOVA is to check the assumption of homogeneity of variance using Levene’s test. This test isn’t included as standard in R, so we need to load in a package (a set of functions that someone has written) to run it. You only need to run this once in each R session. Add the following lines to your script<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, and run them:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load car package</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Levene's test</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(wmc <span class="sc">~</span> type, <span class="at">data =</span> type_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load car package</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Levene's test</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(wmc <span class="sc">~</span> type, <span class="at">data =</span> type_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in leveneTest.default(y = y, group = group, ...): group coerced to
-factor.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  2  1.4751 0.2344
-      87               </code></pre>
-</div>
-</div>
-<p>The output prints a warning that it interpreted our group (i.e., game type) as a factor. This is fine, that’s what we want it to do! You can then see that the test is not significant, so we can assume that the variances are equal across the groups. This means that we can proceed with our ANOVA.</p>
+<p>The output first prints a warning that it interpreted our group (i.e., game type) as a factor. This is fine, that’s what we want it to do! You should then see that the test is not significant (<em>p</em> &gt; .05), so we can assume that the variances are equal across the groups. This means we can proceed with our ANOVA.</p>
 <p>We can run the test and display the results using only two lines of code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run ANOVA and save output to object</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gametype_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(wmc <span class="sc">~</span> type, <span class="at">data =</span> type_dat)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print output summary</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gametype_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run ANOVA and save output to object</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>gametype_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(wmc <span class="sc">~</span> type, <span class="at">data =</span> type_dat)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print output summary</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gametype_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will produce your ANOVA summary table as follows:</p>
 <div class="cell">
@@ -446,36 +430,52 @@ Residuals   87 275.53    3.17
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>Just like in SPSS, we can pick out the degrees of freedom (2, 87), the F ratio (4.806) and the <em>p</em>-value (.01). This tells us that there is a significant difference in working memory capacity depending on the type of game that people play most regularly (<em>p</em> &lt; .05).</p>
+<p>Just like in SPSS, we can pick out the degrees of freedom (2, 87), the F ratio (11.12) and the <em>p</em>-value (&lt; .001). This tells us that there is a significant difference in working memory capacity depending on the type of game that people play most regularly.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Why does my p-value look weird?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why does my p-value look weird?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When numbers get very small, R defaults to scientific notation. Perhaps some of you are experienced in reading this, but I am not. If you want to turn this off, add <code>options(scipen=999)</code> to the top of your scripts.</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
 <section id="summary" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Summary</h1>
-<p>We’ve just introduced some important concepts in R, and gone through how to do some basic statistical tests. In fact, we did many of the things you already know about, but in only about 15 lines of code! Of course, R offers many more sophisticated options, e.g.&nbsp;for factorial ANOVAs, post-hoc tests, regression and so on. You are welcome to find out more about how to do these yourselves.</p>
+<p>We have introduced some important concepts in R and learnt how to do some basic statistical tests. In fact, we did many of the things you already know about, but in only approximately 15 lines of code! Of course, R offers many more sophisticated options, e.g.&nbsp;for factorial ANOVAs, post-hoc tests, regression and so on. You are welcome to find out more about how to do these yourselves.</p>
 <section id="challenge-yourself" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">6.1</span> Challenge yourself</h2>
 <p>If you have completed the practical in good time and want to challenge yourself, have a go at the following independent exercise. Use the first dataset (ARM1_data1_gamers.csv) to look more closely at the number of hours played.</p>
-<ul>
-<li>Use the descriptive statistics functions to work out the mean and standard deviation of this variable.</li>
-<li>Find one or more functions that give us the minimum and maximum number of hours played in the dataset.</li>
-<li>Examine the correlation between working memory capacity and the number of hours played, for the gamers only.</li>
-</ul>
-<p>You might well encounter some errors along the way, and there are multiple ways to solve the problem. Try using the R help files or googling to fix the problem for yourself: this is a major part of coding! The solution(s) will be released next week.</p>
+<ol type="1">
+<li><p>Use the descriptive statistics functions to work out the mean and standard deviation of this variable.</p></li>
+<li><p>Find one or more functions that give us the minimum and maximum number of hours played in the dataset.</p></li>
+<li><p>Examine the correlation between working memory capacity and the number of hours played, for the gamers only.</p></li>
+</ol>
+<p>You are very likely to encounter some errors along the way, and there are multiple ways to solve the problem! Try using the R help files or googling to find a solution for yourself: this is a major part of coding! Check back here to see solution(s) after the practical.</p>
 </section>
 <section id="further-learning" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="further-learning"><span class="header-section-number">6.2</span> Further learning</h2>
-<p><strong>You do <u>not</u> need to learn R to do well in this module</strong>, but it’s one way of getting to grips with different statistical techniques and many students enjoy the challenge. If you’re serious about learning <em>R</em>, then the following DataCamp chapters are relevant to this week’s content and will help to consolidate the material ready for the practicals ahead. You will need to sign up for a free account using the link from the VLE Module Information page.</p>
+<p>You do not need to become an expert in R to do well in this module, but it’s one way of getting to grips with different statistical techniques and many students enjoy the challenge. If you’re serious about learning R, then the following DataCamp chapters are relevant to this week’s content and will help to consolidate the material ready for the practicals ahead. You will need to sign up for a free account using the link from the VLE Module Information page.</p>
 <ul>
 <li><a href="https://app.datacamp.com/learn/courses/free-introduction-to-r">Introduction to R</a></li>
 <li><a href="https://app.datacamp.com/learn/courses/hypothesis-testing-in-r">Hypothesis Testing in R</a></li>
 </ul>
 <p>You might also be interested in the R version of the Andy Field textbook (<em>Discovering Statistics using R</em>), if this is a familiar learning style for you. It has many example data sets and details of how to do different tests, and there are plenty of copies available in the library. Alternatively, there is a fantastic textbook for undergraduate psychology students developed by Danielle Navarro, which you can <a href="https://learningstatisticswithr.com/book/">access for free online</a>.</p>
 <hr>
-<div class="callout callout-style-default callout-warning no-icon callout-titled" title="How's it going?">
+<div class="callout callout-style-default callout-warning callout-titled" title="How's it going?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 How’s it going?
@@ -498,8 +498,8 @@ How’s it going?
 <li id="fn1"><p>In programming, “variables” are used to store information in memory. In <em>R,</em> a language used for statistics, these are commonly referred to as “objects” to avoid confusion with the use of “variable” in relation to your data (i.e., a column in your dataset, your independent/dependent variables). You will see these referred to as either, and either is fine.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>If you already have some programming experience, you might be more used to using the <code>=</code> symbol to assign values. This works fine in <em>R</em> too so can be used if you prefer. However, using the <code>&lt;-</code> is more clearly distinguished from other aspects of <em>R</em> code, and so is more readily used/taught.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>If you wish to read in different file types in the future (e.g., .xlsx, .sav), there are many different bespoke packages available that will support you in doing this (e.g., read_excel, haven).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>The eagle-eyed among you might also see that you have your first example of rainbow brackets, if you turned on this setting during the 0_SetUp task!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>If you are using your own machine, you will need to install the <em>car</em> package first. You can do this by running <code>install.packages("car")</code> . Give you only need to do this once, you can type it directly into the console.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>The eagle-eyed among you might also see that you have your first example of rainbow brackets, if you turned on this setting during the set-up task!<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>University machines have this package ready installed. If you are using your own machine, you will need to install the <em>car</em> package first. You can do this by running <code>install.packages("car")</code>.You only need to do this once, so can type it directly into the console.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
