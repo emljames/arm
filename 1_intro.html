@@ -338,7 +338,7 @@ Learning objectives
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gamer_dat<span class="sc">$</span>wmc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 8.43</code></pre>
+<pre><code>[1] 8.79</code></pre>
 </div>
 </div>
 <p>If it hasn’t worked, go back over the previous instructions carefully and see if you missed a step. The console will contain any error messages in red. If you are still stuck, raise your hand.</p>
@@ -392,12 +392,24 @@ Take note! (literally)
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(<span class="at">formula =</span> <span class="sc">~</span> age_years <span class="sc">+</span> wmc, <span class="at">data =</span> gamer_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Again, the output should tell you the test that has been done. Does the <em>p</em>-value show that there’s a significant relationship between the two? The final line of output (labelled “cor”) is the correlation coefficient. What happens to working memory as age increases?</p>
-<p>::: {.callout-tip title-“Getting help with functions”=““} These calls for statistical tests that we have just run are called <em>functions.</em> We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., <code>help(t.test)</code> or <code>help(cor.test)</code> in the <em>Console</em> (this is a bit meta, we use the <code>help()</code> function to ask for help about other functions)<em>.</em> This should bring up some helpful information in the bottom right window.</p>
-<p>The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument <code>method = "spearman"</code> inside the brackets. Try this now. :::</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Getting help with functions">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Getting help with functions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These calls for statistical tests that we have just run are called <em>functions.</em> We also used functions above to read in the data, and gain some summary statistics. You can find out more about the options available for each function by typing e.g., <code>help(t.test)</code> or <code>help(cor.test)</code> in the <em>Console</em> (this is a bit meta, we use the <code>help()</code> function to ask for help about other functions)<em>.</em> This should bring up some helpful information in the bottom right window.</p>
+<p>The help pages tell you which “Arguments” you need to give to the function, and how to specify them. For example, we can see that to run a Spearman test rather than a Pearson’s correlation, we should add the argument <code>method = "spearman"</code> inside the brackets. Try this now.</p>
+</div>
+</div>
 </section>
 <section id="running-an-anova" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="running-an-anova"><span class="header-section-number">5.3</span> Running an ANOVA</h2>
-<p>Finally, let’s r a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what <em>type</em> of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.</p>
+<p>Finally, let’s run a simple one-way ANOVA. Now you’ve established that gamers have a higher working memory capacity than non-gamers, we might want to ask whether it matters what <em>type</em> of games people are playing. You run a new study and recruit only young adults who self-report as gamers. You measure their working capacity, and ask them to select their dominant game type.</p>
 <p>Make sure that you have downloaded the data from the VLE and saved it in your data folder. Load it into R and assign it to an object called <code>type_dat</code>. Inspect the dataset to see the game categories.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>type_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM1_data2_gametype.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,7 +423,7 @@ Take note! (literally)
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Levene's test</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(wmc <span class="sc">~</span> type, <span class="at">data =</span> type_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The output first prints a warning that it interpreted our group (i.e., game type) as a factor. This is fine, that’s what we want it to do! You should then see that the test is not significant (<em>p</em> &gt; .05), so we can assume that the variances are equal across the groups. This means we can proceed with our ANOVA.</p>
+<p>The output prints a warning message to say that that it interpreted our group (i.e., game type) as a factor. This is fine, that’s what we want it to do! You should then see that the test is not significant (<em>p</em> &gt; .05), so we can assume that the variances are equal across the groups. This means we can proceed with our ANOVA.</p>
 <p>We can run the test and display the results using only two lines of code:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run ANOVA and save output to object</span></span>
@@ -423,16 +435,16 @@ Take note! (literally)
 <p>This will produce your ANOVA summary table as follows:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-type         2  70.42   35.21   11.12 5.01e-05 ***
-Residuals   87 275.53    3.17                     
+<pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
+type         2   40.3  20.144   4.806 0.0105 *
+Residuals   87  364.7   4.192                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-<p>Just like in SPSS, we can pick out the degrees of freedom (2, 87), the F ratio (11.12) and the <em>p</em>-value (&lt; .001). This tells us that there is a significant difference in working memory capacity depending on the type of game that people play most regularly.</p>
+<p>Just like in SPSS, we can pick out the degrees of freedom (2, 87), the F ratio (4.81) and the <em>p</em>-value (.01). This tells us that there is a significant difference in working memory capacity depending on the type of game that people play most regularly.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Why does my p-value look weird?">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -441,7 +453,7 @@ Why does my p-value look weird?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>When numbers get very small, R defaults to scientific notation. Perhaps some of you are experienced in reading this, but I am not. If you want to turn this off, add <code>options(scipen=999)</code> to the top of your scripts.</p>
 </div>
