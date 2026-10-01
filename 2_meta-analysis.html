@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Emma James">
+
+<title>Week 2: Meta-analysis – Advanced Research Methods</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0695b75e8d502f7d4bb4f249b367eeb5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Advanced Research Methods</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Welcome</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./0_setup.html"> 
+<span class="menu-text">Set-up steps</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-weekly-content" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Weekly content</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-weekly-content">    
+        <li>
+    <a class="dropdown-item" href="./1_intro.html">
+ <span class="dropdown-text">W1: Introduction</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Week 2: Meta-analysis</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Emma James </p>
+            </div>
+    </div>
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
+    <h2 id="toc-title">Outline</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#effect-sizes" id="toc-effect-sizes" class="nav-link" data-scroll-target="#effect-sizes"><span class="header-section-number">2</span> Effect sizes</a>
+  <ul class="collapse">
+  <li><a href="#extract-effect-sizes" id="toc-extract-effect-sizes" class="nav-link" data-scroll-target="#extract-effect-sizes"><span class="header-section-number">2.1</span> Extract effect sizes</a></li>
+  <li><a href="#setting-up-in-rstudio" id="toc-setting-up-in-rstudio" class="nav-link" data-scroll-target="#setting-up-in-rstudio"><span class="header-section-number">2.2</span> Setting up in RStudio</a></li>
+  <li><a href="#compute-sampling-variance" id="toc-compute-sampling-variance" class="nav-link" data-scroll-target="#compute-sampling-variance"><span class="header-section-number">2.3</span> Compute sampling variance</a></li>
+  </ul></li>
+  <li><a href="#computing-pooled-effect-sizes" id="toc-computing-pooled-effect-sizes" class="nav-link" data-scroll-target="#computing-pooled-effect-sizes"><span class="header-section-number">3</span> Computing pooled effect sizes</a>
+  <ul class="collapse">
+  <li><a href="#fixed-effects-meta-analysis" id="toc-fixed-effects-meta-analysis" class="nav-link" data-scroll-target="#fixed-effects-meta-analysis"><span class="header-section-number">3.1</span> Fixed effects meta-analysis</a></li>
+  <li><a href="#random-effects-meta-analysis" id="toc-random-effects-meta-analysis" class="nav-link" data-scroll-target="#random-effects-meta-analysis"><span class="header-section-number">3.2</span> Random effects meta-analysis</a></li>
+  </ul></li>
+  <li><a href="#weighting-studies" id="toc-weighting-studies" class="nav-link" data-scroll-target="#weighting-studies"><span class="header-section-number">4</span> Weighting studies</a>
+  <ul class="collapse">
+  <li><a href="#under-the-hood-computing-inverse-variance" id="toc-under-the-hood-computing-inverse-variance" class="nav-link" data-scroll-target="#under-the-hood-computing-inverse-variance"><span class="header-section-number">4.1</span> Under the hood: computing inverse variance</a></li>
+  <li><a href="#changing-weights-in-the-meta-analysis" id="toc-changing-weights-in-the-meta-analysis" class="nav-link" data-scroll-target="#changing-weights-in-the-meta-analysis"><span class="header-section-number">4.2</span> Changing weights in the meta-analysis</a></li>
+  </ul></li>
+  <li><a href="#displaying-results-with-forest-plots" id="toc-displaying-results-with-forest-plots" class="nav-link" data-scroll-target="#displaying-results-with-forest-plots"><span class="header-section-number">5</span> Displaying results with forest plots</a></li>
+  <li><a href="#inspecting-for-publication-bias" id="toc-inspecting-for-publication-bias" class="nav-link" data-scroll-target="#inspecting-for-publication-bias"><span class="header-section-number">6</span> Inspecting for publication bias</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">7</span> Summary</a>
+  <ul class="collapse">
+  <li><a href="#challenge-yourself" id="toc-challenge-yourself" class="nav-link" data-scroll-target="#challenge-yourself"><span class="header-section-number">7.1</span> Challenge yourself</a></li>
+  <li><a href="#further-learning" id="toc-further-learning" class="nav-link" data-scroll-target="#further-learning"><span class="header-section-number">7.2</span> Further learning</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_meta-analysis.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="2_meta-analysis.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>The aim of this week’s practical is to walk through some of the key steps of conducting a meta-analysis. We will use a recently published meta-analysis that examined the relationship between procedural learning and reading ability.</p>
+<p>The <em>Procedural Deficit Hypothesis</em> proposes that reading and language disorders stem from a difficulty in the procedural learning system—i.e., the system that underpins the learning of probabilistic knowledge (Ullman et al., 2020). Procedural learning is often measured using Serial Reaction Time (SRT) tasks: participants respond to a repeating sequence of stimuli (e.g., different button presses), and their improvements in speed over several blocks are measured as an index of learning. However, evidence that SRT performance is associated with reading ability is mixed, with some studies showing a strong association and others finding nothing at all. Many studies in this area suffer from small sample sizes, making it hard to draw sound conclusions.</p>
+<p>A meta-analysis provides a valuable way of summarising this evidence. This meta-analysis was conducted by a former PhD student at York, Dr Catia Oliveira, together with Professor Lisa Henderson and Dr Emma Hayiou-Thomas. We will use part of their dataset to showcase the different steps in conducting a meta-analysis.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Learning objectives">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Learning objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a reminder, this week’s learning objectives are to:</p>
+<ol type="1">
+<li>Explain the purpose and value of meta-analytic approaches</li>
+<li>Describe key stages of running a meta-analysis</li>
+<li>Compare different ways to weight and pool effect sizes</li>
+<li>Consider and assess the impact of publication bias</li>
+<li>Implement these basic steps in R</li>
+</ol>
+</div>
+</div>
+<hr>
+</section>
+<section id="effect-sizes" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Effect sizes</h1>
+<section id="extract-effect-sizes" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="extract-effect-sizes"><span class="header-section-number">2.1</span> Extract effect sizes</h2>
+<p>In this week’s practical section on the VLE, you should find a file named <strong>ARM2_data_srt_gaps.csv.</strong> Download this file and save it in the <strong>ARM_Practicals/data/</strong> folder you created last week.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you don’t have this folder on your current machine, repeat the <a href="https://emljames.github.io/arm/0_setup.html">set-up steps</a> from Week 1.</p>
+</div>
+</div>
+<p>Open this file in Excel to start with. This is a stripped back version of the published meta-analysis. You can see that we have the following columns:</p>
+<ul>
+<li><strong>Study:</strong> the authors and year of publication</li>
+<li><strong>N:</strong> the sample size</li>
+<li><strong>Age:</strong> the average age of the sample</li>
+<li><strong>Task:</strong> the reading task administered</li>
+<li><strong>Group:</strong> whether the participants had developmental dyslexia (DD) or not (TD)</li>
+<li><strong>Cor:</strong> the correlation coefficient, <em>r</em></li>
+</ul>
+<p>You will see that a few cells are blank. We need to extract this information from the relevant papers before we begin! Inspect the following papers to fill in the missing sample sizes and correlation coefficients:</p>
+<ul>
+<li><a href="https://doi.org/10.1016/j.ridd.2017.10.015">Clark &amp; Lum (2017)</a>. <em>(Hint: Inspect Table 3. You want to know the correlation between the procedural learning (SRTT) and nonword (phonemic decoding efficiency) tasks.)</em></li>
+<li><a href="https://doi.org/10.1080/10888438.2018.1482304">Schmalz et al.&nbsp;(2021)</a>. <em>(Hint: Inspect Table 2. The correlations in the meta-analysis reflect each of the word reading and pseudoword reading measures with the SRTT difference)</em></li>
+</ul>
+<p>Make sure you check carefully that all cells of the table are filled before proceeding. Then save your new version of the file as <strong>ARM2_data_srt_complete.csv</strong> in the same data folder.</p>
+</section>
+<section id="setting-up-in-rstudio" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="setting-up-in-rstudio"><span class="header-section-number">2.2</span> Setting up in RStudio</h2>
+<p>Now we have extracted information from our identified studies, let’s get set up in R. In your ARM_Practicals folder, double click the <strong>ARM_Practicals.Rproj</strong> file to open it in RStudio.</p>
+<p>Create a new R script (using the button at the top-left of your window), and save it as <strong>ARM2_meta-analysis.R</strong> in your scripts folder.</p>
+<p>Start by loading the necessary packages for today’s exercises. You will need to first install the <em>metafor</em> package for meta-analysis by running <code>install.packages("metafor")</code>. You should only need to run this once on any device, so you don’t need to add this to your script. We will also be using the <em>tidyverse</em> package for some basic data manipulation tasks. This is already installed on university machines, but you might need to install it in the same way if you are working on a personal device.</p>
+<p>Once you’ve installed the packages, add the following lines to the top of your script and run them to load the packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># for data cleaning</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)   <span class="co"># for meta-analysis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The next step is to load the data. If you have opened your R project and have saved the data in the data folder, you should be able to read it in as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in extracted effect sizes and study info</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./data/ARM2_data_srt_complete.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The dataset includes studies of people with dyslexia as well as those without reading difficulties. Let’s start by focusing just on those individuals without reading difficulties. We can do this using the <code>filter()</code> function from the <em>tidyverse</em> package that we loaded above. We tell R to filter (or subset) the dataset to keep the rows where the <code>Group</code> column is listed as “TD”, and store the result as <code>td_dat</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>td_dat <span class="ot">&lt;-</span> <span class="fu">filter</span>(full_dat, Group <span class="sc">==</span> <span class="st">"TD"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="compute-sampling-variance" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="compute-sampling-variance"><span class="header-section-number">2.3</span> Compute sampling variance</h2>
+<p>The dataset includes a correlation coefficient for each study, which is our effect size for this meta-analysis. It quantifies the direction and strength of relationship between SRT task performance and reading ability. However, some of the studies has much larger sample sizes than others. Use <code>min(td_dat$N)</code> identify the smallest sample size in the dataset, and then use the <code>max()</code> function to identify the largest.</p>
+<p>To capture this uncertainty around the correlation estimates, we should compute their variance ahead of running the meta-analysis. Our meta-analysis package provides a handy function for doing this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>td_dat_var <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"COR"</span>,   <span class="co"># specify effect size measure</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ri =</span> Cor,          <span class="co"># specify correlation variable</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ni =</span> N,            <span class="co"># specify sample size variable</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">data =</span> td_dat)     <span class="co"># dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you look to your Environment window (top right), you should now see an object called <code>td_dat_var</code>. If you click the grid to open it, you should find two extra columns at the end:</p>
+<ul>
+<li><strong>yi<em>:</em></strong> your effect size, which in this case is identical to the one in the Cor column as we haven’t asked it to do any kind of transformation</li>
+<li><strong>vi:</strong> your sampling variances, which have now been calculated based on the correlation coefficient and sample size</li>
+</ul>
+<p>Now we’re ready to run the analysis!</p>
+<hr>
+</section>
+</section>
+<section id="computing-pooled-effect-sizes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Computing pooled effect sizes</h1>
+<p>In the lecture, you learned about fixed and random effects meta-analyses. Let’s have a go at running both.</p>
+<section id="fixed-effects-meta-analysis" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="fixed-effects-meta-analysis"><span class="header-section-number">3.1</span> Fixed effects meta-analysis</h2>
+<p>In a fixed effects analysis, we assume that all studies are measuring the same underlying true effect size, and calculate the average effect size across the included studies. Use the <code>rma()</code> function to run this as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed effects model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fixed_mod <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"FE"</span>, <span class="at">data =</span> td_dat_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ve specified the variables with our effect size estimates and sampling variance (already conveniently named the same by <code>escalc()</code> function above). We’ve then specified the “FE” method for fixed effects, and the dataset to use.</p>
+<p>Use the <code>summary()</code> function on the model object to inspect the results.</p>
+<p>The output tells us that we ran a Fixed-Effects model with 73 effect sizes. The pooled estimate for the correlation coefficient is ~0.04, showing a very small yet statistically significant correlation.</p>
+</section>
+<section id="random-effects-meta-analysis" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="random-effects-meta-analysis"><span class="header-section-number">3.2</span> Random effects meta-analysis</h2>
+<p>The random effects model assumes that the samples in the meta-analysis are a random sample from a larger population of studies that could plausibly have been/will be conducted. We can fit this alternative model simply by changing the <code>method</code> argument within the meta-analysis function. The package provides several different ways to estimate the heterogeneity between studies (you can see these listed in the documentation by running <code>help(rma)</code>), but for now we will stick with the default option.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Random effects model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>random_mod <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>, <span class="at">data =</span> td_dat_var)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(random_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should see from the results that the coefficient estimate has shrunk slightly and is no longer significant. These are both valid models but have different inferences: the fixed effects model tells us that there is a very small but significant correlation across the available datasets, but when we consider heterogeneity between effect sizes in the random effects model, we see that this effect size is likely even smaller in the wider population.</p>
+<hr>
+</section>
+</section>
+<section id="weighting-studies" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Weighting studies</h1>
+<p>We saw in Section 2 that the variation in sample size was very large. We should consider this in our analysis: a very large study likely provides a better estimate of the true effect size than a very small study.</p>
+<section id="under-the-hood-computing-inverse-variance" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="under-the-hood-computing-inverse-variance"><span class="header-section-number">4.1</span> Under the hood: computing inverse variance</h2>
+<p>One of the most common ways to do this is via inverse-variance, which the <code>rma()</code> function does by default. If you inspect your <code>td_dat_var</code> data frame, you will see that the smaller samples have the highest variance (<code>vi</code>). You can click on the column header to order the data by this variable, so that you can see this for yourself.</p>
+<p>To use this variance in the analysis, the model uses the <em>inverse</em> (<code>1/variance</code>), so that smaller samples have the smallest weighting. The function does this under the hood, but you can see what this looks like by calculating it for yourself:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>td_dat_inv <span class="ot">&lt;-</span> <span class="fu">mutate</span>(td_dat_var, <span class="at">inv_var =</span> <span class="dv">1</span><span class="sc">/</span>vi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we used the <code>mutate()</code> function (from the <em>tidyverse</em> package) to make a change to the existing dataframe <code>td_dat_var</code>. We provide the name of the new variable, <code>inv_var</code>, and specify that this variable should be computed as 1 divided by the variance variable <code>vi</code>. We assigned the new version of the dataset to a new object, <code>td_dat_inv</code>.</p>
+<p>Inspect this new object by clicking the grid icon in your Environment window. You should now see that your <code>inv_var</code> column has larger numbers for studies with larger sample sizes (<code>N</code>).</p>
+</section>
+<section id="changing-weights-in-the-meta-analysis" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="changing-weights-in-the-meta-analysis"><span class="header-section-number">4.2</span> Changing weights in the meta-analysis</h2>
+<p>Because weighting by inverse variance is a very common and sensible approach, the <code>rma()</code> meta-analysis function does this by default. This means you’ve already weighted your samples in your above models!</p>
+<p>To compare, try fitting two new models (fixed, random) and include the argument <code>weighted = FALSE</code>. Use a different object name to store the model output, so that you can inspect the differences in output when you call <code>summary()</code>.</p>
+<p>Alternatively, you can try weighting by sample size alone, by setting <code>weights = N</code>.</p>
+</section>
+</section>
+<section id="displaying-results-with-forest-plots" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Displaying results with forest plots</h1>
+<p>An easy way to visualise the results is to use a forest plot, which can be generated using <code>forest()</code> function. We simply give the function the name of our meta-analysis model object. We can also use the <code>slab</code> argument to provide study labels, which we can take from the <code>Study</code> column of the dataset we used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(fixed_mod, <span class="at">slab =</span> td_dat_var<span class="sc">$</span>Study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Try this for the different models you ran, and see how the pooled estimate at the bottom changes in whether it crosses the 0 line. You can use the forward and back arrows at the top of the plot window to switch between the different figures you’ve made.</p>
+</section>
+<section id="inspecting-for-publication-bias" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Inspecting for publication bias</h1>
+<p>Finally, let’s consider whether this analysis might be affected by publication bias. We can do this using a funnel plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">funnel</span>(fixed_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a look at <a href="https://www.statisticshowto.com/funnel-plot/">this linked guide for interpreting the funnel plots</a>. What do you conclude?</p>
+<p>You can also test for asymmetry using Egger’s regression test, which is also a built-in function in the <em>metafor</em> package. See if you can find the relevant function online and apply it here.</p>
+</section>
+<section id="summary" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Summary</h1>
+<p>In this practical, we have extracted relevant results from published studies and used them in both fixed and random effects meta-analyses. We saw how these models can weight different studies in computing the pooled estimates, and plotted them using forest plots. Finally, we considered whether there might be evidence of publication bias in this literature. Before you leave, make sure you have commented your code so that future-you remembers what you have done.</p>
+<p>We ran a basic version of these models here, but there is much more you can do to correct for small sample sizes and adjust for the fact that some estimates come from the same study (i.e., there were different correlation coefficients for different measures of reading in the same sample). If you are interested in these issues, you can <a href="https://onlinelibrary.wiley.com/doi/full/10.1111/cogs.13310">access the full paper here</a> or <a href="https://osf.io/ev2xw/">download the full dataset and analysis scripts</a>.</p>
+<section id="challenge-yourself" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">7.1</span> Challenge yourself</h2>
+<p>Often we are interested in how effect sizes vary across different conditions. In this case, the researchers were interested in whether the relationship between procedural learning (SRT) and reading ability might differ depending on the participant groups tested.</p>
+<p>If you finish the practical in good time or want to push your skills further beyond the end of today’s session, see if you can test whether participant <code>Group</code> is a moderator in your analysis. Use the original data file that you loaded in (<code>full_dat</code>), which also includes effect sizes for samples with developmental dyslexia. You can look at the help files or use Google to find out how to include this extra predictor.</p>
+</section>
+<section id="further-learning" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="further-learning"><span class="header-section-number">7.2</span> Further learning</h2>
+<p>You can find the core reading for this week on the VLE. If you come to do meta-analysis in the future or want further details on the different steps that we have covered, then there is an excellent textbook available for free online: <a href="https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/">Harrer et al.&nbsp;(2021). <em>Doing Meta-Analysis with R: A Hands-On Guide</em></a><em>.</em></p>
+<hr>
+<div class="callout callout-style-default callout-warning callout-titled" title="How's it going?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How’s it going?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let us know how today went via this quick survey <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxrvu8kUlKKbFLsFrLhkkWjD9GgFy4hd-kG6ds3N1A_vfCug/viewform?usp=publish-editor">via this survey</a> - rate the difficulty and length, and leave any comments that would help for us to know (positive comments welcome too!). You will need to be logged in with your university account to respond, but your submission will be anonymous.</p>
+<p>For more general questions about the practical, please post them on the <a href="https://vle.york.ac.uk/ultra/courses/_117163_1/discussion/_6581034_1?view=discussions">VLE Discussion Board</a>.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/emljames\.github\.io\/arm\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./LICENSE.html">
+<p>License</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
