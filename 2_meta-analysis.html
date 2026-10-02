@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>The aim of this week’s practical is to walk through some of the key steps of conducting a meta-analysis. We will use a recently published meta-analysis that examined the relationship between procedural learning and reading ability.</p>
+<p>The aim of this week’s practical is to walk through some key steps involved in conducting a meta-analysis. We will use a recently published meta-analysis that examined the relationship between procedural learning and reading ability.</p>
 <p>The <em>Procedural Deficit Hypothesis</em> proposes that reading and language disorders stem from a difficulty in the procedural learning system—i.e., the system that underpins the learning of probabilistic knowledge (Ullman et al., 2020). Procedural learning is often measured using Serial Reaction Time (SRT) tasks: participants respond to a repeating sequence of stimuli (e.g., different button presses), and their improvements in speed over several blocks are measured as an index of learning. However, evidence that SRT performance is associated with reading ability is mixed, with some studies showing a strong association and others finding nothing at all. Many studies in this area suffer from small sample sizes, making it hard to draw sound conclusions.</p>
 <p>A meta-analysis provides a valuable way of summarising this evidence. This meta-analysis was conducted by a former PhD student at York, Dr Catia Oliveira, together with Professor Lisa Henderson and Dr Emma Hayiou-Thomas. We will use part of their dataset to showcase the different steps in conducting a meta-analysis.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Learning objectives">
@@ -235,10 +235,10 @@ Learning objectives
 <p>As a reminder, this week’s learning objectives are to:</p>
 <ol type="1">
 <li>Explain the purpose and value of meta-analytic approaches</li>
-<li>Describe key stages of running a meta-analysis</li>
-<li>Compare different ways to weight and pool effect sizes</li>
-<li>Consider and assess the impact of publication bias</li>
-<li>Implement these basic steps in R</li>
+<li>Describe key stages of conducting a meta-analysis</li>
+<li>Compare different approaches to weighting and pooling effect sizes</li>
+<li>Interpret the results of a meta-analysis</li>
+<li>Assess the impact of publication bias on meta-analytic findings</li>
 </ol>
 </div>
 </div>
@@ -280,7 +280,7 @@ Tip
 </section>
 <section id="setting-up-in-rstudio" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="setting-up-in-rstudio"><span class="header-section-number">2.2</span> Setting up in RStudio</h2>
-<p>Now we have extracted information from our identified studies, let’s get set up in R. In your ARM_Practicals folder, double click the <strong>ARM_Practicals.Rproj</strong> file to open it in RStudio.</p>
+<p>Now that we have extracted information from our identified studies, let’s get set up in R. In your ARM_Practicals folder, double click the <strong>ARM_Practicals.Rproj</strong> file to open it in RStudio.</p>
 <p>Create a new R script (using the button at the top-left of your window), and save it as <strong>ARM2_meta-analysis.R</strong> in your scripts folder.</p>
 <p>Start by loading the necessary packages for today’s exercises. You will need to first install the <em>metafor</em> package for meta-analysis by running <code>install.packages("metafor")</code>. You should only need to run this once on any device, so you don’t need to add this to your script. We will also be using the <em>tidyverse</em> package for some basic data manipulation tasks. This is already installed on university machines, but you might need to install it in the same way if you are working on a personal device.</p>
 <p>Once you’ve installed the packages, add the following lines to the top of your script and run them to load the packages.</p>
@@ -301,7 +301,7 @@ Tip
 </section>
 <section id="compute-sampling-variance" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="compute-sampling-variance"><span class="header-section-number">2.3</span> Compute sampling variance</h2>
-<p>The dataset includes a correlation coefficient for each study, which is our effect size for this meta-analysis. It quantifies the direction and strength of relationship between SRT task performance and reading ability. However, some of the studies has much larger sample sizes than others. Use <code>min(td_dat$N)</code> identify the smallest sample size in the dataset, and then use the <code>max()</code> function to identify the largest.</p>
+<p>The dataset includes a correlation coefficient for each study, which is our effect size for this meta-analysis. It quantifies the direction and strength of relationship between SRT task performance and reading ability. However, some of the studies have much larger sample sizes than others. Use <code>min(td_dat$N)</code> to identify the smallest sample size in the dataset, and then use the <code>max()</code> function to identify the largest.</p>
 <p>To capture this uncertainty around the correlation estimates, we should compute their variance ahead of running the meta-analysis. Our meta-analysis package provides a handy function for doing this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>td_dat_var <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"COR"</span>,   <span class="co"># specify effect size measure</span></span>
@@ -329,7 +329,7 @@ Tip
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fixed_mod <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"FE"</span>, <span class="at">data =</span> td_dat_var)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’ve specified the variables with our effect size estimates and sampling variance (already conveniently named the same by <code>escalc()</code> function above). We’ve then specified the “FE” method for fixed effects, and the dataset to use.</p>
+<p>We’ve specified the variables with our effect size estimates and sampling variance (already conveniently named the same by the <code>escalc()</code> function above). We’ve then specified the “FE” method for fixed effects, and the dataset to use.</p>
 <p>Use the <code>summary()</code> function on the model object to inspect the results.</p>
 <p>The output tells us that we ran a Fixed-Effects model with 73 effect sizes. The pooled estimate for the correlation coefficient is ~0.04, showing a very small yet statistically significant correlation.</p>
 </section>
@@ -381,7 +381,7 @@ Tip
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">funnel</span>(fixed_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Take a look at <a href="https://www.statisticshowto.com/funnel-plot/">this linked guide for interpreting the funnel plots</a>. What do you conclude?</p>
-<p>You can also test for asymmetry using Egger’s regression test, which is also a built-in function in the <em>metafor</em> package. See if you can find the relevant function online and apply it here.</p>
+<p>There is also a statistical test for the assymetry called <em>Egger’s regression test</em>. There’s a built-in function for this in the <em>metafor</em> package. Search online to see if you can find the relevant function, then apply it here.</p>
 </section>
 <section id="summary" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Summary</h1>
@@ -406,7 +406,7 @@ How’s it going?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let us know how today went via this quick survey <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxrvu8kUlKKbFLsFrLhkkWjD9GgFy4hd-kG6ds3N1A_vfCug/viewform?usp=publish-editor">via this survey</a> - rate the difficulty and length, and leave any comments that would help for us to know (positive comments welcome too!). You will need to be logged in with your university account to respond, but your submission will be anonymous.</p>
+<p>Let us know how today went <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxrvu8kUlKKbFLsFrLhkkWjD9GgFy4hd-kG6ds3N1A_vfCug/viewform?usp=publish-editor">via this quick survey</a> - rate the difficulty and length, and leave any comments that would help for us to know (positive comments welcome too!). You will need to be logged in with your university account to respond, but your submission will be anonymous.</p>
 <p>For more general questions about the practical, please post them on the <a href="https://vle.york.ac.uk/ultra/courses/_117163_1/discussion/_6581034_1?view=discussions">VLE Discussion Board</a>.</p>
 </div>
 </div>
