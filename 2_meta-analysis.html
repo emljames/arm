@@ -140,6 +140,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./1_intro.html">
  <span class="dropdown-text">W1: Introduction</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./2_meta-analysis.html">
+ <span class="dropdown-text">W2: Meta-analysis</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -372,7 +376,8 @@ Tip
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(fixed_mod, <span class="at">slab =</span> td_dat_var<span class="sc">$</span>Study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Try this for the different models you ran, and see how the pooled estimate at the bottom changes in whether it crosses the 0 line. You can use the forward and back arrows at the top of the plot window to switch between the different figures you’ve made.</p>
+<p>Use the plot to ask yourself the following questions: How many individual studies showed significant effects? Were they positive or negative? Which study samples had the largest influence on the results?</p>
+<p>Create forest plots for the different models you ran above, and see how the pooled estimate at the bottom changes in whether it crosses the 0 line. You can use the forward and back arrows at the top of the plot window to switch between the different figures you’ve made.</p>
 </section>
 <section id="inspecting-for-publication-bias" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Inspecting for publication bias</h1>
