@@ -144,6 +144,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./2_meta-analysis.html">
  <span class="dropdown-text">W2: Meta-analysis</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./3_mixed-effects.html">
+ <span class="dropdown-text">W3: Mixed effects</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -376,7 +380,7 @@ Tip
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">forest</span>(fixed_mod, <span class="at">slab =</span> td_dat_var<span class="sc">$</span>Study)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Use the plot to ask yourself the following questions: How many individual studies showed significant effects? Were they positive or negative? Which study samples had the largest influence on the results?</p>
+<p>Use the plot to ask yourself the following questions: How many individual samples showed significant effects? Were they positive or negative? Which study samples had the largest influence on the results?</p>
 <p>Create forest plots for the different models you ran above, and see how the pooled estimate at the bottom changes in whether it crosses the 0 line. You can use the forward and back arrows at the top of the plot window to switch between the different figures you’ve made.</p>
 </section>
 <section id="inspecting-for-publication-bias" class="level1" data-number="6">
@@ -386,7 +390,7 @@ Tip
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">funnel</span>(fixed_mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Take a look at <a href="https://www.statisticshowto.com/funnel-plot/">this linked guide for interpreting the funnel plots</a>. What do you conclude?</p>
-<p>There is also a statistical test for the assymetry called <em>Egger’s regression test</em>. There’s a built-in function for this in the <em>metafor</em> package. Search online to see if you can find the relevant function, then apply it here.</p>
+<p>There is also a statistical test for the asymmetry called <em>Egger’s regression test</em>. There’s a built-in function for this in the <em>metafor</em> package. Search online to see if you can find the relevant function, then apply it here.</p>
 </section>
 <section id="summary" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Summary</h1>
@@ -396,6 +400,21 @@ Tip
 <h2 data-number="7.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">7.1</span> Challenge yourself</h2>
 <p>Often we are interested in how effect sizes vary across different conditions. In this case, the researchers were interested in whether the relationship between procedural learning (SRT) and reading ability might differ depending on the participant groups tested.</p>
 <p>If you finish the practical in good time or want to push your skills further beyond the end of today’s session, see if you can test whether participant <code>Group</code> is a moderator in your analysis. Use the original data file that you loaded in (<code>full_dat</code>), which also includes effect sizes for samples with developmental dyslexia. You can look at the help files or use Google to find out how to include this extra predictor.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show solutions</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute sampling variance for full dataset</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>full_dat_var <span class="ot">&lt;-</span> <span class="fu">escalc</span>(<span class="at">measure =</span> <span class="st">"COR"</span>,  <span class="co"># specify effect size measure</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ri =</span> Cor,         <span class="co"># specify correlation variable</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ni =</span> N,           <span class="co"># specify sample size variable</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">data =</span> full_dat)  <span class="co"># dataset</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Run model with Group factor as moderator</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>group_mod <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> yi, <span class="at">vi =</span> vi, <span class="at">mods =</span> <span class="sc">~</span> <span class="fu">factor</span>(Group),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">method =</span> <span class="st">"REML"</span>, <span class="at">data =</span> full_dat_var)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(group_mod)  <span class="co"># no effect of group (p = 0.159)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="further-learning" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="further-learning"><span class="header-section-number">7.2</span> Further learning</h2>
