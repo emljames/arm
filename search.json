@@ -333,7 +333,7 @@
     "href": "3_mixed-effects.html#challenge-yourself",
     "title": "Mixed effects models",
     "section": "7.1 Challenge yourself",
-    "text": "7.1 Challenge yourself\nWe fitted a linear mixed effects model on response time data, a continuous variable. Mixed effects models are extremely flexible, and we can also use them to model accuracy data (which have binary values of 0 and 1). The underlying maths is different, but the process of fitting them in R is largely the same.\nTry to figure out how to analyse the accuracy data available in this dataset. You will need to find the function for running a binomial mixed effects model, and specify the family as you run it.\nCan you fit a maximal random effects structure for this model?"
+    "text": "7.1 Challenge yourself\nWe fitted a linear mixed effects model on response time data, a continuous variable. Mixed effects models are extremely flexible, and we can also use them to model accuracy data (which have binary values of 0 and 1). The underlying maths is different, but the process of fitting them in R is largely the same.\nTry to figure out how to analyse the accuracy data available in this dataset. You will need to find the function for running a binomial mixed effects model, and specify the family as you run it.\nCan you fit a maximal random effects structure for this model?\n\n\nShow solutions\n# Fit logistic regression model on accuracy data\nacc_mod &lt;- glmer(acc ~ sleep + (1+sleep|ppt_id) + (1+sleep|item), \n                 family = \"binomial\", data = sleep_dat) \n\n# Inspect output\nsummary(acc_mod)\n## Note that the coefficients are not directly interpretable in these models"
   },
   {
     "objectID": "3_mixed-effects.html#further-learning",
