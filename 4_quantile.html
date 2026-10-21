@@ -311,6 +311,7 @@ Tip
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(read_dat<span class="sc">$</span>vocab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<hr>
 </section>
 </section>
 <section id="fit-a-linear-model" class="level1" data-number="3">
@@ -347,6 +348,7 @@ Tips for efficient code
 </div>
 </div>
 </div>
+<hr>
 </section>
 <section id="fit-a-median-regression-model" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Fit a median regression model</h1>
@@ -359,6 +361,8 @@ Tips for efficient code
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(read_med)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>How do the coefficients compare to your regular linear regression model? Note that the quantile regression approach doesn’t provide precise <em>p</em>-values, but we can infer statistically significant relationships by inspecting with the 95% confidence intervals provided span 0<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>We can alternatively ask for p-values when calling the <code>summary()</code> function, but need to specify how they should be calculated. One approach can be to include <code>se = "boot"</code> —we’ll learn more about what that actually means next week!</p>
+<hr>
 </section>
 <section id="model-multiple-quantiles" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Model multiple quantiles</h1>
@@ -403,6 +407,7 @@ Why do I get a warning message?
 <p>The bottom right window should now show a plot for each component of the model. The x-axis for each plot is the quantile, and the y-axis is the value of the coefficient. The red lines mark the coefficient and confidence intervals for the regular (ordinary least squares) regression model. The black lines and shaded areas mark the coefficient and confidence intervals for the quantile regression model—linking between the three quantiles that we fitted in the model.</p>
 <p>The intercept (i.e., average performance) increases steadily across quantiles, which makes sense considering we have weighted responses at different levels of reading comprehension. How do the two predictors of interest change across the distribution? This visualises the same points you reflected on above.</p>
 <p>What have we learned about struggling readers that we would have missed by only carrying out the main regression analysis?</p>
+<hr>
 </section>
 <section id="summary" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Summary</h1>
