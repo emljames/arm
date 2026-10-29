@@ -382,7 +382,8 @@ Coding tip!
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>all_means[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(b) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Embed the two lines in your loop</strong> to achieve the resampling.</p>
-<p>Create a histogram of the <code>all_means</code> vector using the <code>hist()</code> function. Note that it is normally distributed, despite the underlying data coming from a non-normal distribution. We can get R to work out the 95% confidence intervals using the quantile function:</p>
+<p>Create a histogram of the <code>all_means</code> vector using the <code>hist()</code> function. It should look like a normal distribution, despite the underlying data coming from a non-normal distribution. (<em>Hint: if you get a single block only, make sure you’ve embedded your code in a loop!)</em></p>
+<p>We can get R to work out the 95% confidence intervals using the quantile function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(all_means, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -422,7 +423,7 @@ Coding tip!
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot </span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bumps_lm, <span class="fu">aes</span>(<span class="at">x =</span> body_diss, <span class="at">y =</span> depression)) <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bumps_dat, <span class="fu">aes</span>(<span class="at">x =</span> body_diss, <span class="at">y =</span> depression)) <span class="sc">+</span> </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>    <span class="co"># black and white theme</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="co"># data points </span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> bumps_lm<span class="sc">$</span>coefficients[<span class="st">"(Intercept)"</span>], <span class="co"># model regression</span></span>
@@ -476,6 +477,35 @@ Coding tip!
 </details>
 </div>
 <p>If you have time, see if you can add these new slopes to your figure. You might wish to change the linetype or colour of your new lines so that your confidence intervals are distinguished from your original slope. <em>ggplot2</em> is a very flexible tool with lots of opportunities for customising your plots, so you can have fun trying to make your figure look more visually appealing by googling what you wish to change.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and store CI values</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lowerCI <span class="ot">&lt;-</span> <span class="fu">quantile</span>(all_slopes, <span class="fl">0.025</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>upperCI <span class="ot">&lt;-</span> <span class="fu">quantile</span>(all_slopes, <span class="fl">0.975</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="do">### Plot original regression line plus boostrapped 95% confidence intervals</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bumps_dat, <span class="fu">aes</span>(<span class="at">x =</span> body_diss, <span class="at">y =</span> depression)) <span class="sc">+</span> </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>    <span class="co"># black and white theme</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="co"># data points</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># original regression line</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> bumps_lm<span class="sc">$</span>coefficients[<span class="dv">1</span>], </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> bumps_lm<span class="sc">$</span>coefficients[<span class="dv">2</span>], <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># lower confidence interval </span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> bumps_lm<span class="sc">$</span>coefficients[<span class="dv">1</span>], </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> lowerCI, <span class="at">colour =</span> <span class="st">"blue"</span>) <span class="sc">+</span> </span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># upper confidence interval </span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> bumps_lm<span class="sc">$</span>coefficients[<span class="dv">1</span>], </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> upperCI, <span class="at">colour =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Note you could also extract and  use the bootstrapped intercepts in these to improve further </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <hr>
 </section>
 </section>
@@ -485,7 +515,26 @@ Coding tip!
 <section id="challenge-yourself" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">5.1</span> Challenge yourself</h2>
 <p>In standard cases, we might prefer to take “shortcuts” and use pre-programmed functions in R. Try using Google to see what packages already exist for bootstrapping. Can you get them up and running using online resources?</p>
-<p>Alternatively, you could repeat the steps today in analysing the anxiety variable, and expand the code to calculate the bootstrapped intercept <em>and</em> slopecoefficient.</p>
+<p>Alternatively, you could repeat the steps today in analysing the anxiety variable, and expand the code to calculate the bootstrapped intercept <em>and</em> slope coefficient.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show solutions</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## This is one way, but I'm sure there are many more! </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data cleaning</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car)        <span class="co"># for bootstrapping</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Remove rows from dataframe with missing values (package doesn't do by default)</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>bumps_cc <span class="ot">&lt;-</span> <span class="fu">filter</span>(bumps_dat, <span class="sc">!</span><span class="fu">is.na</span>(depression))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Refit linear model to tidy data</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>bumps_lm_cc <span class="ot">&lt;-</span> <span class="fu">lm</span>(depression <span class="sc">~</span> body_diss, <span class="at">data =</span> bumps_cc)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Run bootstrap and calculate confidence intervals</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>bs_mod <span class="ot">&lt;-</span> <span class="fu">Boot</span>(bumps_lm_cc, <span class="at">R =</span> <span class="dv">1000</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">Confint</span>(bs_mod, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 <section id="further-learning" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="further-learning"><span class="header-section-number">5.2</span> Further learning</h2>
