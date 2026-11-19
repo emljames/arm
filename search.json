@@ -578,7 +578,7 @@
     "href": "8_machine-learning.html#load-packages",
     "title": "Machine Learning",
     "section": "2.2 Load packages",
-    "text": "2.2 Load packages\nWe will need the following packages for today’s session, so add these lines of code at the top of your script. Run them so that they are ready to use.\n\nlibrary(tidyverse)  # for data wrangling\nlibrary(caret) # for SVM classifiers"
+    "text": "2.2 Load packages\nWe will need the following packages for today’s session, so add these lines of code at the top of your script. Run them so that they are ready to use. You may later get asked to install kernlab, make sure you say yes to this!\n\nlibrary(tidyverse)  # for data wrangling\nlibrary(caret) # for SVM classifiers"
   },
   {
     "objectID": "8_machine-learning.html#formatting-data",
