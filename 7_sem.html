@@ -493,6 +493,69 @@ Keyboard shortcuts
 <h2 data-number="5.1" class="anchored" data-anchor-id="challenge-yourself"><span class="header-section-number">5.1</span> Challenge yourself</h2>
 <p>Mathematical reasoning is only <em>one</em> aspect of mathematical ability in developing learners. The researchers were also interested in speeded arithmetic skills, which they measured in Year 3 using 6 different tasks (labelled <code>t3_add1</code>, <code>t3_add2</code>, <code>t3_sub1</code>, <code>t3_sub2</code>, <code>t3_mult</code>, <code>t3_div</code>).</p>
 <p>Fit a new model in which your early numeric skills (transcoding, number comparison) predict subsequent performance in speeded arithmetic, captured by a third latent variable (as depicted below). You will need to specify how this latent variable is measured, and then use it in a regression path.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show solutions: Step 1 (Measurement model)</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Most ideally, start by exploring the measurement model for speeded arithmetic</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Measurement model v1</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>y3_speed_arith1 <span class="ot">&lt;-</span> <span class="st">"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">                                   t3_mult + t3_div"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>sa_mm1 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(y3_speed_arith1, <span class="at">data =</span> maths_dat)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sa_mm1, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">modindices</span>(sa_mm1, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Measurement model v2</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  y3_speed_arith2 <span class="ot">&lt;-</span> <span class="st">"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="st">                                     t3_mult + t3_div</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="st">                      t3_mult ~~ t3_div"</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>sa_mm2 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(y3_speed_arith2, <span class="at">data =</span> maths_dat)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sa_mm2, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">modindices</span>(sa_mm2, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Measurement model v3</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>y3_speed_arith3 <span class="ot">&lt;-</span> <span class="st">"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + </span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="st">                                   t3_mult + t3_div</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="st">                    t3_mult ~~ t3_div</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="st">                    t3_add1 ~~ t3_add2"</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>sa_mm3 <span class="ot">&lt;-</span> <span class="fu">cfa</span>(y3_speed_arith3, <span class="at">data =</span> maths_dat)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sa_mm3, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu">modindices</span>(sa_mm3, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Probably stop here - next biggest less sensible? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Show solutions: Step 2 (Structural model)</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Structural model</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>pred_sa <span class="ot">&lt;-</span> <span class="st">"# measurement model </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">            transcoding =~ t1_tc1 + t1_tc2 + t1_tc3</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">            num_comparison =~ t1_nc1 + t1_nc2 + t1_nc3 + </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">                              t1_nc4 + t1_nc5 + t1_nc6</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">            speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + </span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">                           t3_sub2 + t3_mult + t3_div</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="st">            t3_mult ~~ t3_div</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="st">            t3_add1 ~~ t3_add2</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="st">                              </span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="st">            # regressions</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="st">            speed_arith ~ transcoding + num_comparison"</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit and inspect</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>fit_sa <span class="ot">&lt;-</span> <span class="fu">sem</span>(pred_sa, <span class="at">data =</span> maths_dat)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_sa, <span class="at">fit.measures =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create abbreviated labels</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"t1_tc1"</span>, <span class="st">"t1_tc2"</span>, <span class="st">"t1_tc_3"</span>, <span class="st">"t1_nc1"</span>, <span class="st">"t1_nc2"</span>, <span class="st">"t1_nc3"</span>, <span class="st">"t1_nc4"</span>, <span class="st">"t1_nc5"</span>, <span class="st">"t1_nc6"</span>, <span class="st">"numerical"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot figure</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit_1f, <span class="at">nodeLabels =</span> labels, <span class="at">sizeMan =</span> <span class="dv">8</span>, <span class="at">sizeLat =</span> <span class="dv">12</span>, <span class="at">fade =</span> <span class="cn">FALSE</span>, <span class="at">edge.label.cex =</span> <span class="dv">1</span>, <span class="at">height =</span> <span class="dv">4</span>, <span class="at">width =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<details class="code-fold">
+<summary>Show solutions: Step 2 (Structural model)</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">semPaths</span>(fit_sa, <span class="at">layout =</span> <span class="st">"tree"</span>, <span class="at">residuals =</span> <span class="cn">FALSE</span>, <span class="at">exoCov =</span> <span class="cn">FALSE</span>, <span class="at">exoVar =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div class="cell" data-fit-alt="Year 1 number comparisons (6 variables) and Year 1 transcoding (3 variables) both predict Year 3 speeded arithmetic (formed from the six t3 arithmetic variables).">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">

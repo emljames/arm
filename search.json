@@ -109,7 +109,7 @@
     "href": "7_sem.html#challenge-yourself",
     "title": "Structural equation modelling",
     "section": "5.1 Challenge yourself",
-    "text": "5.1 Challenge yourself\nMathematical reasoning is only one aspect of mathematical ability in developing learners. The researchers were also interested in speeded arithmetic skills, which they measured in Year 3 using 6 different tasks (labelled t3_add1, t3_add2, t3_sub1, t3_sub2, t3_mult, t3_div).\nFit a new model in which your early numeric skills (transcoding, number comparison) predict subsequent performance in speeded arithmetic, captured by a third latent variable (as depicted below). You will need to specify how this latent variable is measured, and then use it in a regression path.\n\n\n\n\n\nSimplified path diagram showing how number comparison and transcoding skills measured in Year 1 predict speeded arithmetic skills in Year 3."
+    "text": "5.1 Challenge yourself\nMathematical reasoning is only one aspect of mathematical ability in developing learners. The researchers were also interested in speeded arithmetic skills, which they measured in Year 3 using 6 different tasks (labelled t3_add1, t3_add2, t3_sub1, t3_sub2, t3_mult, t3_div).\nFit a new model in which your early numeric skills (transcoding, number comparison) predict subsequent performance in speeded arithmetic, captured by a third latent variable (as depicted below). You will need to specify how this latent variable is measured, and then use it in a regression path.\n\n\nShow solutions: Step 1 (Measurement model)\n# Most ideally, start by exploring the measurement model for speeded arithmetic\n\n# Measurement model v1\ny3_speed_arith1 &lt;- \"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + \n                                   t3_mult + t3_div\"\nsa_mm1 &lt;- cfa(y3_speed_arith1, data = maths_dat)\nsummary(sa_mm1, fit.measures = TRUE)\nmodindices(sa_mm1, sort = TRUE)\n\n# Measurement model v2\n  y3_speed_arith2 &lt;- \"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + \n                                     t3_mult + t3_div\n                      t3_mult ~~ t3_div\"\nsa_mm2 &lt;- cfa(y3_speed_arith2, data = maths_dat)\nsummary(sa_mm2, fit.measures = TRUE)\nmodindices(sa_mm2, sort = TRUE)\n\n# Measurement model v3\ny3_speed_arith3 &lt;- \"speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + t3_sub2 + \n                                   t3_mult + t3_div\n                    t3_mult ~~ t3_div\n                    t3_add1 ~~ t3_add2\"\nsa_mm3 &lt;- cfa(y3_speed_arith3, data = maths_dat)\nsummary(sa_mm3, fit.measures = TRUE)\nmodindices(sa_mm3, sort = TRUE)\n# Probably stop here - next biggest less sensible? \n\n\n\n\nShow solutions: Step 2 (Structural model)\n# Structural model\npred_sa &lt;- \"# measurement model \n            transcoding =~ t1_tc1 + t1_tc2 + t1_tc3\n            num_comparison =~ t1_nc1 + t1_nc2 + t1_nc3 + \n                              t1_nc4 + t1_nc5 + t1_nc6\n            speed_arith =~ t3_add1 + t3_add2 + t3_sub1 + \n                           t3_sub2 + t3_mult + t3_div\n            t3_mult ~~ t3_div\n            t3_add1 ~~ t3_add2\n                              \n            # regressions\n            speed_arith ~ transcoding + num_comparison\"\n\n# Fit and inspect\nfit_sa &lt;- sem(pred_sa, data = maths_dat)\nsummary(fit_sa, fit.measures = TRUE)\n\n# Plot\n# Create abbreviated labels\nlabels &lt;- c(\"t1_tc1\", \"t1_tc2\", \"t1_tc_3\", \"t1_nc1\", \"t1_nc2\", \"t1_nc3\", \"t1_nc4\", \"t1_nc5\", \"t1_nc6\", \"numerical\")\n\n# Plot figure\nsemPaths(fit_1f, nodeLabels = labels, sizeMan = 8, sizeLat = 12, fade = FALSE, edge.label.cex = 1, height = 4, width = 6)\n\n\nShow solutions: Step 2 (Structural model)\nsemPaths(fit_sa, layout = \"tree\", residuals = FALSE, exoCov = FALSE, exoVar = FALSE)\n\n\n\n\n\n\n\nSimplified path diagram showing how number comparison and transcoding skills measured in Year 1 predict speeded arithmetic skills in Year 3."
   },
   {
     "objectID": "7_sem.html#further-learning",
@@ -411,6 +411,48 @@
     "title": "Getting set up for the module",
     "section": "4.2 Rainbow parentheses",
     "text": "4.2 Rainbow parentheses\nSometimes we will need to wrap things inside multiple nested brackets. You don’t need to worry about what this means for now, but while we’re on the settings, we can set up one of my favourite RStudio features: rainbow parentheses! This setting colour codes your brackets so that you can tell which ones are paired together. And who doesn’t want a bit of colour on their scripts?!\n\nOn the Global Options… window you have open, click on “Code” down the left hand side.\nClick the “Display” tab at the top.\nUnder syntax, check the box that says “Use rainbow parentheses”.\nThen click “Apply”, and/or “OK” to close the window.\n\n\n\n\nGlobal options window with recommended Code Display settings\n\n\nAs for what this has done? Well, you’ll just have to wait and see as we get writing scripts…"
+  },
+  {
+    "objectID": "10_bayes.html",
+    "href": "10_bayes.html",
+    "title": "Bayesian statistics",
+    "section": "",
+    "text": "In this practical, we will work through several examples of calculating Bayes Factors using the BayesFactor package (Morey & Rouder, 2024). This is a simple and effective way of incorporating Bayesian methods alongside standard frequentist significance testing. Indeed, some people advocate reporting a “B for every P” (e.g., Dienes & Mclatchie, 2018) to facilitate the interpretation of null findings. You might encounter Bayes Factors as you read recent literature for your other advanced options.\nNote that Bayesian modelling is an approach that can be broadly applied, rather than a single statistical method. That is, there are Bayesian versions of pretty much every technique we’ve learned in this module! This means that it can get very complex. However, we will stick to considering how Bayes Factors can supplement the frequentist tests you learned about in Years 1 and 2.\n\n\n\n\n\n\nNote\n\n\n\nAs a reminder, this week’s learning objectives are to:\n\nRecall core principles of frequentist statistics\nDescribe the philosophy behind Bayesian statistics\nExplain how prior and posterior probability distributions are used in Bayesian inference\nCompare alternative models by interpreting Bayes Factors as evidence\nDiscuss the relative merits of frequentist and Bayesian statistical approaches"
+  },
+  {
+    "objectID": "10_bayes.html#create-a-script",
+    "href": "10_bayes.html#create-a-script",
+    "title": "Bayesian statistics",
+    "section": "2.1 Create a script",
+    "text": "2.1 Create a script\nStart with the usual set-up steps for the practical sessions:\n\nOpen your ARM_Practicals.Rproj file in RStudio\nCreate a new script and save it in your scripts/ folder as ARM10_Bayes.R\n\nThe data we will work with today is the same data that we used for the very first practical, where we learned how to run basic statistical tests in R. If you don’t have this on your current machine, re-download the data from the VLE and save it in your data folder."
+  },
+  {
+    "objectID": "10_bayes.html#load-packages",
+    "href": "10_bayes.html#load-packages",
+    "title": "Bayesian statistics",
+    "section": "2.2 Load packages",
+    "text": "2.2 Load packages\nInstall the BayesFactor package using install.packages() or the packages tab. Once it is installed, you can load it at the top of your script ready for today. You will also need the tidyverse package loaded for some simple data manipulation.\n\nlibrary(BayesFactor)\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "10_bayes.html#load-data",
+    "href": "10_bayes.html#load-data",
+    "title": "Bayesian statistics",
+    "section": "2.3 Load data",
+    "text": "2.3 Load data\nLoad the two datasets for today’s session. If you remember, these two datasets looked at working memory capacity in relation to gaming.\n\n# Load data\ngamer_dat &lt;- read.csv(\"./data/ARM1_data1_gamers.csv\")\ntype_dat &lt;- read.csv(\"./data/ARM1_data2_gametype.csv\")\n\nThe first dataset (gamer_dat) compared the working memory capacity of gamers and non-gamers, whereas the type_dat dataset focused on the different types of games that gamers played. Inspect the data frames to remind yourself what these looked like."
+  },
+  {
+    "objectID": "10_bayes.html#challenge-yourself",
+    "href": "10_bayes.html#challenge-yourself",
+    "title": "Bayesian statistics",
+    "section": "7.1 Challenge yourself",
+    "text": "7.1 Challenge yourself\nRun a full sensitivity analysis on the t-test analysis above. The aim is to produce a plot that shows how the Bayes Factor changes as the prior scale is increased from 0.1 to 4, in steps of 0.1 (similar to the one linked above).\nYou will need to create a for loop (like you did in the stochastic methods practical) and extract the Bayes Factor values for each model. Here are some hints:\n\nBefore your loop, you will need to create an empty list to store Bayes Factors.\nYou might also want to create a variable that starts at 0, then increases by one each time through the loop. You can use this variable to index which row/entry of your list to store the output in each time.\nYou can use the seq() function to specify the different scale values. We used this in plotting above, and you can inspect the help files to see how it works.\nYou can extract the Bayes Factor from the model output as follows: bf_list[n] &lt;- extractBF(bf, onlybf = TRUE) , where bf is the output of the ttestBF() command above, and bf_list is the name of your list to store the output.\nAfter you’ve run your loop to calculate the different Bayes Factor values, you should display them in a figure. You can plot your different scale values on the x-axis, and resulting Bayes Factors on the y-axis.\n\nIs the function a straight line, or does it peak around some optimal value? Would your conclusions about these data have changed based on the values of the prior that you selected?"
+  },
+  {
+    "objectID": "10_bayes.html#further-learning",
+    "href": "10_bayes.html#further-learning",
+    "title": "Bayesian statistics",
+    "section": "7.2 Further learning",
+    "text": "7.2 Further learning\nThis week’s core reading is on the VLE as usual. If you want to gain more interactive experience, there’s a whole DataCamp course on Bayesian Data Analysis, although note that this goes into some quite advanced issues on distributions that were beyond today’s practical.\n\n\n\n\n\n\nHow’s it going?\n\n\n\nLet us know how today went via this quick survey—rate the difficulty and length, and leave any comments that would help for us to know (positive comments welcome too!). You will need to be logged in with your university account to respond, but your submission is anonymous.\nFor more general questions about the practical, please post them on the VLE Discussion Board."
   },
   {
     "objectID": "2_meta-analysis.html",
