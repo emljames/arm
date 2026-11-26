@@ -168,6 +168,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./8_machine-learning.html">
  <span class="dropdown-text">W8: Maching learning</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./9_fourier.html">
+ <span class="dropdown-text">W9: Fourer analysis</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -729,6 +733,61 @@ Prediction Face House
 <section id="challenge-yourself" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Challenge yourself</h1>
 <p>So far, you have fit only linear SVM models, which use straight-line decision boundaries to separate classes. However, SVMs can also use non-linear kernels that allow more flexible boundaries when the relationship between predictors and outcomes is more complex. As a challenge, use the Haxby et al.&nbsp;(2001) dataset comparing faces to house images to fit an SVM model with a non-linear kernel, such as a Radial Basis Function kernel. Compare this model’s performance to the linear SVM by examining the confusion matrix and accuracy values. Does the radial kernel improve or worsen the model’s performance? Why might this be the case?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show solution</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We already have the shuffled face/scrambled grouping data stored in </span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># train_data_fh_shuffled and test_data_fh_shuffled</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># For reproducibility</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1503</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Train a linear SVM model</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>svmFitRadial <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  Condition <span class="sc">~</span> ., <span class="co"># Model formula: . = Use all variables in dataframe</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_data_fh_shuffled, <span class="co"># Data</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"svmRadial"</span>, <span class="co"># Method,</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>) <span class="co"># Standardise variables</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict and evaluate</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>preds_radial <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">predict</span>(svmFitRadial, </span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                               <span class="at">newdata =</span> test_data_fh_shuffled)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>conf_matrix_radial <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(preds_radial, </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                                             test_data_fh_shuffled<span class="sc">$</span>Condition)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>conf_matrix_radial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+           Reference
+Prediction  Face Scrambled
+  Face         3         2
+  Scrambled    3         4
+                                          
+               Accuracy : 0.5833          
+                 95% CI : (0.2767, 0.8483)
+    No Information Rate : 0.5             
+    P-Value [Acc &gt; NIR] : 0.3872          
+                                          
+                  Kappa : 0.1667          
+                                          
+ Mcnemar's Test P-Value : 1.0000          
+                                          
+            Sensitivity : 0.5000          
+            Specificity : 0.6667          
+         Pos Pred Value : 0.6000          
+         Neg Pred Value : 0.5714          
+             Prevalence : 0.5000          
+         Detection Rate : 0.2500          
+   Detection Prevalence : 0.4167          
+      Balanced Accuracy : 0.5833          
+                                          
+       'Positive' Class : Face            
+                                          </code></pre>
+</div>
+</div>
 <hr>
 </section>
 <section id="summary" class="level1" data-number="6">
